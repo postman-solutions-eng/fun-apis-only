@@ -1,0 +1,66 @@
+$kind: http-example
+name: Found Waldo?
+request:
+  url: "{{baseUrl}}/chat/completions"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-4-vision-preview",
+          "messages": [
+              {
+                  "role": "user",
+                  "content": [
+                          {
+                              "type": "text",
+                              "text": "What’s in this image? Can you find Waldo in it?"
+                          },
+                          {
+                              "type": "image_url",
+                              "image_url": "https://blog.kuula.co/assets/waldo/header.png"
+                          }
+                  ]
+              }
+          ],
+          "temperature": 1,
+          "top_p": 1,
+          "n": 1,
+          "stream": false,
+          "max_tokens": 250,
+          "presence_penalty": 0,
+          "frequency_penalty": 0
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-8IfRyglLPrx0RGVXvkltax1fDBcaC",
+          "object": "chat.completion",
+          "created": 1699459930,
+          "model": "gpt-4-1106-vision-preview",
+          "usage": {
+              "prompt_tokens": 1126,
+              "completion_tokens": 164,
+              "total_tokens": 1290
+          },
+          "choices": [
+              {
+                  "message": {
+                      "role": "assistant",
+                      "content": "This image is a bustling and colorful street scene, reminiscent of a \"Where's Waldo?\" illustration where many individuals are wearing red and white striped shirts, similar to the character Waldo's distinctive outfit. There's a mix of people and activities: individuals are walking, biking, and interacting with each other. Some notable features include numerous trees, European-style buildings of various colors, and even a giraffe standing among the trees to the left of the scene.\n\nRegarding Waldo, I'm sorry, but I'm unable to visually identify specific characters, including Waldo, within images. However, if this is a genuine \"Where's Waldo?\" image, you should look for a character wearing red and white stripes, blue pants, round glasses, and a bobble hat. Enjoy the challenge of searching for him!"
+                  },
+                  "finish_details": {
+                      "type": "stop",
+                      "stop": "<|fim_suffix|>"
+                  },
+                  "index": 0
+              }
+          ]
+      }
+order: 1000

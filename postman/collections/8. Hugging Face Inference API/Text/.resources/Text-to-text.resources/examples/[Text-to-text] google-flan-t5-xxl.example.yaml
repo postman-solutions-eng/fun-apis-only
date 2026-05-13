@@ -1,0 +1,43 @@
+$kind: http-example
+name: "[Text-to-text] google/flan-t5-xxl"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: google/flan-t5-xxl
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "Please answer the following question. What is the boiling point of Nitrogen?"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 22:15:00 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-validation-time: "0"
+    x-inference-time: "532"
+    x-compute-characters: "76"
+    access-control-allow-credentials: "true"
+    vary: origin, Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    access-control-allow-origin: "*"
+    x-total-time: "532"
+    x-compute-type: gpu+optimized
+    x-sha: ae7c9136adc7555eeccc78cdd960dfd60fb346ce
+    x-time-per-token: "76"
+    x-request-id: pUZwPRcB-so2_-YijY-iw
+    x-queue-time: "0"
+    x-compute-time: "532"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "generated_text": "-196 °C"
+          }
+      ]
+order: 1000

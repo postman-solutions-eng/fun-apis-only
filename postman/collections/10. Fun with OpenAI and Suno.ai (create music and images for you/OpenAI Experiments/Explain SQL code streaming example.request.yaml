@@ -1,0 +1,42 @@
+$kind: http-request
+url: "{{openAIUrl}}/chat/completions"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-3.5-turbo",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful assistant acting like GitHub Co-Pilot that will explain what the code the user is providing will do"
+            },
+            {
+                "role": "user",
+                "content": "SELECT DISTINCT department.name FROM department JOIN employee ON department.id = employee.department_id JOIN salary_payments ON employee.id = salary_payments.employee_id WHERE salary_payments.date BETWEEN '2020-06-01' AND '2020-06-30' GROUP BY department.name HAVING COUNT(employee.id) > 10; -- Explanation of the above query in human readable format -- "
+            }
+        ],
+        "temperature": 0.3,
+        "max_tokens": 300,
+        "stream": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+          pm.expect(jsonData).to.be.an('object');
+          pm.visualizer.set(`<textarea style="width: 100vw; height: 100vh; font-family: monospace;">${pm.response.json().choices[0].message.content}</textarea>`);
+      });
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+    language: text/javascript
+examples: ./.resources/Explain SQL code streaming example.resources/examples
+order: 12000

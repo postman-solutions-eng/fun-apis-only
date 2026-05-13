@@ -1,0 +1,65 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/images/edits"
+  method: POST
+  body:
+    type: formdata
+    content:
+      - type: file
+        key: image
+        src: sfLWMJw3y/output-onlinepngtools (1).png
+        description: The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask.
+      - type: file
+        key: mask
+        src: poKIrTn-l/gerenuk-removebg-preview.png
+        description: An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as image.
+      - type: text
+        key: prompt
+        value: make the background on the moon
+        description: A text description of the desired image(s). The maximum length is 1000 characters.
+      - type: text
+        key: n
+        value: "2"
+        description: The number of images to generate. Must be between 1 and 10.
+      - type: text
+        key: size
+        value: 1024x1024
+        description: The size of the generated images. Must be one of 256x256, 512x512, or 1024x1024.
+      - type: text
+        key: response_format
+        value: url
+        description: The format in which the generated images are returned. Must be one of url or b64_json.
+      - type: text
+        key: user
+        value: ""
+        description: A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
+        disabled: true
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Thu, 23 Mar 2023 01:53:40 GMT
+    Content-Type: application/json
+    Content-Length: "1050"
+    Connection: keep-alive
+    OpenAI-Version: 2020-10-01
+    OpenAI-Organization: user-aaaa
+    X-Request-ID: 2ccc6f49530c32e8c06fa4a1adfb8c9a
+    OpenAI-Processing-Ms: "12169"
+    Access-Control-Allow-Origin: "*"
+    Strict-Transport-Security: max-age=15724800; includeSubDomains
+  body:
+    type: json
+    content: |-
+      {
+          "created": 1679536420,
+          "data": [
+              {
+                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-6dmqkbEsO2sA55h8sMAzZdMz/user-YDfxhOf885yCVb52Zjw5ly51/img-NF2ROxO8oIWUU5hTAtL4zboF.png?st=2023-03-23T00%3A53%3A40Z&se=2023-03-23T02%3A53%3A40Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-23T00%3A21%3A07Z&ske=2023-03-24T00%3A21%3A07Z&sks=b&skv=2021-08-06&sig=bp0dpNFHBWwdQS%2BlXxeEJTfFxXPT2%2BE0Dv8A5EE5U5w%3D"
+              },
+              {
+                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-6dmqkbEsO2sA55h8sMAzZdMz/user-YDfxhOf885yCVb52Zjw5ly51/img-qJM5cHnLnzd8f7u8eLdc7410.png?st=2023-03-23T00%3A53%3A40Z&se=2023-03-23T02%3A53%3A40Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-23T00%3A21%3A07Z&ske=2023-03-24T00%3A21%3A07Z&sks=b&skv=2021-08-06&sig=n1i17VSimhyRPwDKXZ9Fe1iNQsqRXvzO48TqgUTivys%3D"
+              }
+          ]
+      }
+order: 1000

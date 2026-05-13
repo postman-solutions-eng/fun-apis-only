@@ -1,0 +1,16 @@
+$kind: collection
+description: |-
+  [https://openai.com/api/](https://openai.com/api/)
+
+  You get $5 of Free trial usage.
+
+  Contains examples on how to generate images, complete text, generate new source code and have existing source code explained to you. Supports GPT-4 models (DALL-E, ChatGPT, Whisper) and Content Moderation.
+variables:
+  OPENAI_API_KEY: <get at https://beta.openai.com/account/api-keys>
+  baseUrl: https://api.openai.com/v1
+auth:
+  - id: c4c4e195-cb5f-409b-80b2-cc15e2dea3c6
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{OPENAI_API_KEY}}"

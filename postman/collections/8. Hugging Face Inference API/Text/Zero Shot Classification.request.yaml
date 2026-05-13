@@ -1,0 +1,27 @@
+$kind: http-request
+description: |-
+  **Zero Shot (Text) Classification** is a type of text classification model that can be used to classify text into categories that were not seen during training. You can define which categories for the model to look out for.
+
+  See available [Zero Shot (Text) Classification models](https://huggingface.co/models?pipeline_tag=zero-shot-classification&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli](https://huggingface.co/MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli) | Base model is DeBERTa-v3-base from Microsoft |
+  | [facebook/bart-large-mnli](https://huggingface.co/facebook/bart-large-mnli) | NLI-based Zero Shot Text Classification |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli
+body:
+  type: json
+  content: |
+    {
+      "inputs": "Hi, I recently bought a device from your company but it is not working as advertised and I would like to get reimbursed!",
+      "parameters": {
+        "candidate_labels": ["refund", "legal", "faq"]
+      }
+    }
+examples: ./.resources/Zero Shot Classification.resources/examples
+order: 2000

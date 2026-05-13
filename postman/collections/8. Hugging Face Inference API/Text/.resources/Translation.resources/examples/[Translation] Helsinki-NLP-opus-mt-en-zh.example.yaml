@@ -1,0 +1,39 @@
+$kind: http-example
+name: "[Translation] Helsinki-NLP/opus-mt-en-zh"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: Helsinki-NLP/opus-mt-en-zh
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "My name is Sarah and I live in London"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 22:09:40 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    server: uvicorn
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-compute-type: cpu
+    x-request-id: bJOdxCeTaf_I4g0RY11fs
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-characters: "37"
+    x-compute-time: "0.236"
+    x-sha: a4193836671069f1f80ce341f9227a850ffb52d4
+    access-control-allow-credentials: "true"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "translation_text": "我叫莎拉,我住伦敦"
+          }
+      ]
+order: 1000

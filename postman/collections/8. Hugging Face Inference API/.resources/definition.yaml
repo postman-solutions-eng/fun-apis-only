@@ -1,0 +1,27 @@
+$kind: collection
+description: |-
+  For the [free Hugging Face Inference API](https://huggingface.co/inference-api)
+
+  Can be used with most [Models](https://huggingface.co/models) hosted on Hugging Face.
+
+  (Not to be confused with the Hugging Face [Hosted Inference Endpoints API](https://huggingface.co/docs/inference-endpoints/index))
+
+  ### Getting started
+
+  - Make a [Hugging Face](https://huggingface.co/) account
+  - Get a Hugging Face API [access token](https://huggingface.co/settings/tokens)
+  - Save your access token as the value for the collection variable `access_token`
+      
+
+  ### 503 errors
+
+  Many of the hosted models take a second to warm up from a cold start. You may encounter a 503 error the first time you call a model. Wait about 20 seconds and try again!
+variables:
+  baseUrl: https://api-inference.huggingface.co
+  access_token: ⚠️ put in current value >>>
+auth:
+  - id: bbeeaf38-52d0-4363-b418-db4ca34a24c2
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{access_token}}"

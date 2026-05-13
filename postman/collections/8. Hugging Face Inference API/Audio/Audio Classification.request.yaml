@@ -1,0 +1,24 @@
+$kind: http-request
+description: |-
+  **Audio Classification** models classify audio into one or more categories.
+
+  Audio files can be sent as a binary data type.
+
+  See available Audio [Classification models](https://huggingface.co/models?pipeline_tag=audio-classification&sort=downloads)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [MIT/ast-finetuned-audioset-10-10-0.4593](https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593) | Classifies content of an audio samples (ex: "male speech", "monologue", "conversation", etc) |
+  | [ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition](https://huggingface.co/ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition) | Classifies emotions detected in clips of English speech  <br>  <br>emotions = \['angry', 'calm', 'disgust', 'fearful', 'happy', 'neutral', 'sad', 'surprised'\] |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: MIT/ast-finetuned-audioset-10-10-0.4593
+body:
+  type: file
+  content:
+    src: A3gXUTMUV/voice.mp3
+examples: ./.resources/Audio Classification.resources/examples
+order: 1000

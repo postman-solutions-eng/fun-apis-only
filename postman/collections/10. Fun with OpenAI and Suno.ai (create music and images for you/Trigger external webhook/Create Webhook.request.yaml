@@ -1,0 +1,36 @@
+$kind: http-request
+description: |-
+  Creates a webhook that triggers a collection with a custom payload. You can get the webhook's URL from the `webhookUrl` property in the endpoint's response.
+
+  Include the following properties in a `webhook` object in the request body:
+
+  *   `name` — The webhook's name. On success, the system creates a new monitor with this name in the **Monitors** tab.
+  *   `collection` — The collection UID to trigger when calling this webhook.
+url: https://api.getpostman.com/webhooks?workspace={{workspaceId}}
+method: POST
+queryParams:
+  - key: workspace
+    value: "{{workspaceId}}"
+    description: |-
+      Optional. A workspace ID in which to create the webhook.
+
+      If you do not include this query parameter, the system creates the webhook in your "My Workspace" workspace.
+  - key: ""
+    value: ""
+    disabled: true
+body:
+  type: json
+  content: |-
+    {
+        "webhook":{
+            "name": "{{webhookName}}",
+            "collection": "{{collectionUid}}"
+        }
+    }
+auth:
+  type: apikey
+  credentials:
+    key: x-api-key
+    value: "{{postman_api_key}}"
+examples: ./.resources/Create Webhook.resources/examples
+order: 1000

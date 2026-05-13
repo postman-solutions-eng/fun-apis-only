@@ -1,0 +1,19 @@
+$kind: http-request
+url: https://c15418b4-1616-49a1-9a9e-9f88e5ec2519.mock.pstmn.io/returnStatusCode
+method: GET
+headers:
+  x-mock-response-code: "{{statusCode}}"
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("API response 2xx OK", function () {
+          if (pm.response.code < 200 || pm.response.code > 299) {
+              pm.visualizer.set('<video controls height="240" width="320"><source src="https://cdn1.suno.ai/1b72ba29-3a56-4571-b347-f975127e4bed.mp4" type="video/mp4"></video>', {});
+              pm.expect.fail("API status code is not 2xx ok, go to the visualization tab for a video on explanations how to fix this.");
+          }
+      });
+    language: text/javascript
+order: 10000

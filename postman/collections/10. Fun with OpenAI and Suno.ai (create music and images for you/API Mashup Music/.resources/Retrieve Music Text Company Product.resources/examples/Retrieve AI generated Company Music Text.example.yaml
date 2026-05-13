@@ -1,0 +1,79 @@
+$kind: http-example
+request:
+  url: "{{openAIUrl}}/chat/completions"
+  method: POST
+  body:
+    type: json
+    content: |
+      {
+          "model": "gpt-4o",
+          "messages": [
+              {
+                  "role": "user",
+                  "content": [
+                          {
+                              "type": "text",
+                              "text": "Write a very short song text about {{company}}'s great products. It should have two verses and one bridge. Write [Bridge] in front of the bridge's text and [Verse 2] in front of the second verse. Start your output right away with the song. Do not repeat [Verse] twice at the beginning. The song's musical genre is {{musicStyle}} and the text of the song should be in {{language}}"
+                          }
+                          
+                  ]
+              }
+          ],
+          "temperature": 0.2,
+          "n": 1,
+          "stream": false,
+          "max_tokens": 500,
+          "presence_penalty": 0,
+          "frequency_penalty": 0
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Sat, 25 May 2024 22:48:05 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    openai-organization: user-lryarsvrbjl30zf7hotgyuce
+    openai-processing-ms: "1737"
+    openai-version: 2020-10-01
+    strict-transport-security: max-age=15724800; includeSubDomains
+    x-ratelimit-limit-requests: "10000"
+    x-ratelimit-limit-tokens: "800000"
+    x-ratelimit-remaining-requests: "9999"
+    x-ratelimit-remaining-tokens: "799403"
+    x-ratelimit-reset-requests: 6ms
+    x-ratelimit-reset-tokens: 44ms
+    x-request-id: req_4b21c23a3f68064a34cecc53d0cad115
+    CF-Cache-Status: DYNAMIC
+    Server: cloudflare
+    CF-RAY: 88991220bfcf34f8-WAW
+    Content-Encoding: br
+    alt-svc: h3=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-9SuTEjz46JowhbywJwp1zKXtPT9No",
+          "object": "chat.completion",
+          "created": 1716677284,
+          "model": "gpt-4o-2024-05-13",
+          "choices": [
+              {
+                  "index": 0,
+                  "message": {
+                      "role": "assistant",
+                      "content": "Adidas on my feet, I'm feelin' so elite,  \nFrom the streets to the gym, can't be beat,  \nThree stripes, no hype, just pure might,  \nIn my gear, I'm ready, day or night.\n\n[Verse 2]  \nBoost in my step, I'm flyin' so high,  \nPerformance and style, reachin' for the sky,  \nFrom the track to the court, I'm always on point,  \nAdidas got me covered, every joint.\n\n[Bridge]  \nInnovation in the threads, comfort in the soles,  \nAdidas keeps me movin', achievin' all my goals,  \nFrom classics to the new, they always come through,  \nIn my Adidas gear, there's nothin' I can't do."
+                  },
+                  "logprobs": null,
+                  "finish_reason": "stop"
+              }
+          ],
+          "usage": {
+              "prompt_tokens": 94,
+              "completion_tokens": 156,
+              "total_tokens": 250
+          },
+          "system_fingerprint": "fp_43dfabdef1"
+      }
+order: 1000

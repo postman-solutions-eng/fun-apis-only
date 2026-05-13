@@ -1,0 +1,52 @@
+$kind: http-request
+description: |-
+  [https://beta.openai.com/docs/api-reference/completions](https://beta.openai.com/docs/api-reference/completions/create)
+
+  Input some text as a prompt, and the model will generate a text completion that attempts to match whatever context or pattern you gave it.
+
+  > Keep in mind that the default models' training data cuts off in 2021, so they may not have knowledge of current events. We plan to add more continuous training in the future.
+
+  See content models here:  
+  [https://beta.openai.com/docs/models/overview](https://beta.openai.com/docs/models/overview)
+
+  ### Viewing images
+
+  Open the **Visualizer** tab in the response to view your artistic creation.
+
+  <img src="https://content.pstmn.io/9f41f11a-b21e-4207-b709-7b0169d26466/aW1hZ2UucG5n" alt="" height="1178" width="1650">
+url: "{{baseUrl}}/images/generations"
+method: POST
+body:
+  type: json
+  content: |
+    {
+      "prompt": "comic book style: three astronauts wearing white uniforms with orange elements are recording a new song in a collaborative jamming session",
+      "n": 1,
+      "size": "1024x1024",
+      "model": "dall-e-3"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = pm.response.json()
+
+      const urls = body.data.map(i => i.url)
+
+      const template = `
+      <style>
+      div {
+          display: flex;
+          gap: 1rem;
+      }
+      </style>
+
+      <div>
+        {{#each urls}} 
+          <img src="{{this}}">
+        {{/each}}
+      </div>
+      `
+      pm.visualizer.set(template, { urls })
+    language: text/javascript
+examples: ./.resources/image generation (DALL-E 3).resources/examples
+order: 4000

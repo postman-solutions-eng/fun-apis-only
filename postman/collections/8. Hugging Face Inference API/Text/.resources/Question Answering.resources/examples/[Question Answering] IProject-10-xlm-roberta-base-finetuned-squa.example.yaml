@@ -1,0 +1,43 @@
+$kind: http-example
+name: "[Question Answering] IProject-10/xlm-roberta-base-finetuned-squad2"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: IProject-10/xlm-roberta-base-finetuned-squad2
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": {
+          "question": "Where do I live?",
+          "context": "My name is Sarah and I live in London"
+        }
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:43:36 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-expose-headers: x-compute-type, x-compute-time
+    access-control-allow-credentials: "true"
+    server: uvicorn
+    x-compute-time: "0.035"
+    x-compute-characters: "53"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-request-id: 4bw3bpgEgb6b6th3wwDcw
+    x-sha: be636721188357a7b6298d4188bebc25b6d7fa22
+    x-compute-type: cpu
+  body:
+    type: json
+    content: |-
+      {
+          "score": 0.9833791851997375,
+          "start": 31,
+          "end": 37,
+          "answer": "London"
+      }
+order: 1000

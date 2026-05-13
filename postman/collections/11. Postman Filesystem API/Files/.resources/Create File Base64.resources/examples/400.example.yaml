@@ -1,0 +1,42 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/files/file-base64.txt"
+  method: POST
+  headers:
+    Authorization: Bearer {{token}}
+  body:
+    type: json
+    content: |-
+      {
+          "fileData": "xdata:application/json;base64,SGVsbG8sIFdvcmxkIQ=="
+      }
+response:
+  statusCode: 400
+  statusText: Bad Request
+  headers:
+    Content-Security-Policy: "default-src 'self';style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;script-src 'self';img-src 'self' data: https:;connect-src 'self';font-src 'self' https://cdn.jsdelivr.net;object-src 'none';media-src 'self';frame-src 'none';base-uri 'self';form-action 'self';frame-ancestors 'self';script-src-attr 'none';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=15552000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Access-Control-Allow-Origin: "*"
+    Content-Type: application/json; charset=utf-8
+    Content-Length: "118"
+    ETag: W/"76-jv9Um7cOa+/Fj+Uki5SVIJ7vtSQ"
+    Date: Thu, 20 Feb 2025 21:11:35 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+          "error": "Invalid fileData format. Must be a data URI string starting with \"data:application/octet-stream;base64,\""
+      }
+order: 2000

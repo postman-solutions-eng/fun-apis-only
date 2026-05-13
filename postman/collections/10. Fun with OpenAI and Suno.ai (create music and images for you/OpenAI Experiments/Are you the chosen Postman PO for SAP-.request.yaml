@@ -1,0 +1,29 @@
+$kind: http-request
+name: Are you the chosen Postman PO for SAP?
+description: Creates an image given a prompt.
+url: "{{openAIUrl}}/images/generations"
+method: POST
+body:
+  type: json
+  content: |
+    {
+      "prompt": "Uncle Sam recruiter 'I want you' using the typical SAP software branding including logo",
+      "n": 1,
+      "size": "1024x1024",
+      "model": "dall-e-3"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = pm.response.json();
+
+      var html = '';
+
+      for (let i = 0; i < jsonData.data.length; i++) {
+          html += '<img src="' + jsonData.data[i].url + '" width="1024">';
+      }
+
+      pm.visualizer.set(html);
+    language: text/javascript
+examples: ./.resources/Are you the chosen Postman PO for SAP-.resources/examples
+order: 4000

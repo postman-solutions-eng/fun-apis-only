@@ -1,0 +1,142 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/flights/aircraft?icao24=3c675a&begin=1517184000&end=1517270400"
+  method: GET
+  queryParams:
+    icao24: 3c675a
+    begin: "1517184000"
+    end: "1517270400"
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Server: nginx/1.17.6
+    Date: Sat, 17 Dec 2022 04:58:39 GMT
+    Content-Type: application/json;charset=UTF-8
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    X-Content-Type-Options: nosniff
+    X-XSS-Protection: 1; mode=block
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    Pragma: no-cache
+    Expires: "0"
+    X-Frame-Options: DENY
+    Content-Encoding: gzip
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517258040,
+              "estDepartureAirport": "EDDF",
+              "lastSeen": 1517263900,
+              "estArrivalAirport": "ESSA",
+              "callsign": "DLH2VC  ",
+              "estDepartureAirportHorizDistance": 1462,
+              "estDepartureAirportVertDistance": 49,
+              "estArrivalAirportHorizDistance": 7194,
+              "estArrivalAirportVertDistance": 423,
+              "departureAirportCandidatesCount": 1,
+              "arrivalAirportCandidatesCount": 3
+          },
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517249610,
+              "estDepartureAirport": null,
+              "lastSeen": 1517253348,
+              "estArrivalAirport": "EDDF",
+              "callsign": "DLH1RP  ",
+              "estDepartureAirportHorizDistance": null,
+              "estDepartureAirportVertDistance": null,
+              "estArrivalAirportHorizDistance": 4478,
+              "estArrivalAirportVertDistance": 110,
+              "departureAirportCandidatesCount": 0,
+              "arrivalAirportCandidatesCount": 3
+          },
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517241634,
+              "estDepartureAirport": "EDDF",
+              "lastSeen": 1517244499,
+              "estArrivalAirport": null,
+              "callsign": "DLH830  ",
+              "estDepartureAirportHorizDistance": 934,
+              "estDepartureAirportVertDistance": 42,
+              "estArrivalAirportHorizDistance": null,
+              "estArrivalAirportVertDistance": null,
+              "departureAirportCandidatesCount": 1,
+              "arrivalAirportCandidatesCount": 0
+          },
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517232785,
+              "estDepartureAirport": null,
+              "lastSeen": 1517236619,
+              "estArrivalAirport": "EDDF",
+              "callsign": "DLH9JV  ",
+              "estDepartureAirportHorizDistance": null,
+              "estDepartureAirportVertDistance": null,
+              "estArrivalAirportHorizDistance": 2974,
+              "estArrivalAirportVertDistance": 103,
+              "departureAirportCandidatesCount": 0,
+              "arrivalAirportCandidatesCount": 3
+          },
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517224628,
+              "estDepartureAirport": "EDDF",
+              "lastSeen": 1517227647,
+              "estArrivalAirport": null,
+              "callsign": "DLH3TT  ",
+              "estDepartureAirportHorizDistance": 1091,
+              "estDepartureAirportVertDistance": 65,
+              "estArrivalAirportHorizDistance": null,
+              "estArrivalAirportVertDistance": null,
+              "departureAirportCandidatesCount": 1,
+              "arrivalAirportCandidatesCount": 0
+          },
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517216755,
+              "estDepartureAirport": "EDDT",
+              "lastSeen": 1517219608,
+              "estArrivalAirport": "EDDF",
+              "callsign": "DLH181  ",
+              "estDepartureAirportHorizDistance": 214,
+              "estDepartureAirportVertDistance": 8,
+              "estArrivalAirportHorizDistance": 4475,
+              "estArrivalAirportVertDistance": 149,
+              "departureAirportCandidatesCount": 1,
+              "arrivalAirportCandidatesCount": 3
+          },
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517210550,
+              "estDepartureAirport": "EDDF",
+              "lastSeen": 1517213305,
+              "estArrivalAirport": "EDDT",
+              "callsign": "DLH7AH  ",
+              "estDepartureAirportHorizDistance": 1542,
+              "estDepartureAirportVertDistance": 65,
+              "estArrivalAirportHorizDistance": 1571,
+              "estArrivalAirportVertDistance": 44,
+              "departureAirportCandidatesCount": 1,
+              "arrivalAirportCandidatesCount": 2
+          },
+          {
+              "icao24": "3c675a",
+              "firstSeen": 1517194350,
+              "estDepartureAirport": null,
+              "lastSeen": 1517204390,
+              "estArrivalAirport": "EDDF",
+              "callsign": "DLH613  ",
+              "estDepartureAirportHorizDistance": null,
+              "estDepartureAirportVertDistance": null,
+              "estArrivalAirportHorizDistance": 1827,
+              "estArrivalAirportVertDistance": 126,
+              "departureAirportCandidatesCount": 0,
+              "arrivalAirportCandidatesCount": 3
+          }
+      ]
+order: 1000

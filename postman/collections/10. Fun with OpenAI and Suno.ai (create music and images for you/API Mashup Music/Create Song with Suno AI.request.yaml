@@ -1,0 +1,93 @@
+$kind: http-request
+description: Creates a completion for the provided prompt and parameters.
+url: "{{sunoAIUrl}}/api/custom_generate"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "prompt": "{{musicText}}",
+      "tags": "{{musicStyle}}",
+      "title": "{{company}} Postman Song ({{statusCode}})",
+      "make_instrumental": false,
+      "wait_audio": true
+    }
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Each element in the response array has the required properties", function () {
+          var responseJSON = pm.response.json();
+          responseJSON.forEach(function(item) {
+              pm.expect(item).to.have.property('id');
+              pm.expect(item).to.have.property('title');
+              pm.expect(item).to.have.property('image_url');
+              pm.expect(item).to.have.property('lyric');
+              pm.expect(item).to.have.property('audio_url');
+              pm.expect(item).to.have.property('created_at');
+              pm.expect(item).to.have.property('model_name');
+              pm.expect(item).to.have.property('status');
+              pm.expect(item).to.have.property('gpt_description_prompt');
+              pm.expect(item).to.have.property('prompt');
+              pm.expect(item).to.have.property('type');
+              pm.expect(item).to.have.property('tags');
+          });
+      });
+
+      pm.test("Save the IDs of all returned songs in a collection variable named songIds", function () {
+          var songIds = [];
+          var responseJSON = pm.response.json();
+          responseJSON.forEach(function(item) {
+              songIds.push(item.id);
+          });
+          pm.collectionVariables.set("songIds", songIds.join(","));
+      });
+
+      var template = `
+      <style type="text/css">
+          .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}
+          .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}
+          .tftable tr {background-color:#ffffff;}
+          .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}
+          .tftable tr:hover {background-color:#e0ffff;}
+      </style>
+
+      <table class="tftable" border="1">
+          <tr>
+              <th>Title</th>
+              <th>Image</th>
+              <th>Audio</th>
+              <th>Lyrics</th>
+              <th>Status</th>
+          </tr>
+          
+          {{#each response}}
+              <tr>
+                  <td>{{title}}</td>
+                  <td><img src="{{image_url}}" alt="No Image Available" height="100"></td>
+                  <td><audio controls><source src="{{audio_url}}" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
+                  <td>{{lyric}}</td>
+                  <td>{{status}}</td>
+              </tr>
+          {{/each}}
+      </table>
+      `;
+
+      function constructVisualizerPayload() {
+          var res = pm.response.json();
+          res.forEach(function(item) {
+              if (item.status === "streaming") {
+                  item.status = "Streaming";
+              }
+          });
+          
+          return {response: res};
+      }
+
+      pm.visualizer.set(template, constructVisualizerPayload());
+    language: text/javascript
+examples: ./.resources/Create Song with Suno AI.resources/examples
+order: 6000

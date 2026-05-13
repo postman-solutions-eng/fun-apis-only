@@ -1,0 +1,27 @@
+$kind: http-request
+description: |-
+  # File Download
+
+  This endpoint makes an HTTP GET request to retrieve the file "file.txt".
+
+  ### Request
+
+  - Method: GET
+      
+  - URL: `{{baseUrl}}/api/files/file.txt`
+      
+
+  ### Response
+
+  - Status: 200
+      
+  - Content-Type: text/plain
+      
+
+  The response contains the content of the file "file.txt", which in this case is "Hello, World!".
+url: "{{baseUrl}}/api/files/file.txt"
+method: GET
+headers:
+  Authorization: Bearer {{token}}
+examples: ./.resources/Read File.resources/examples
+order: 1000

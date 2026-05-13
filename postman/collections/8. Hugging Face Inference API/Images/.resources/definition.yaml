@@ -1,0 +1,23 @@
+$kind: collection
+description: |-
+  Images can be sent as
+
+  - URLs
+      
+  - base64
+      
+  - binary data
+      
+
+  In the case of binary data, paste the following into a Postman request URL to create the basic request. Then in the Body of the request, use the filepicker helper.
+
+  ```
+  curl --request POST \
+    --url https://api-inference.huggingface.co/models/:model \
+    --header 'Content-Type: image/jpg' \
+    --data-binary '@test.jpg'
+
+   ```
+
+  Make sure the request is inheriting Auth from the parent to use your access token
+order: 2000

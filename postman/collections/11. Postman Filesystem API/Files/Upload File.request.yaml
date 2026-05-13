@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/api/files/file.txt"
+method: POST
+headers:
+  Authorization: Bearer {{token}}
+body:
+  type: formdata
+  content:
+    - type: file
+      key: file
+      src: /Users/johannesnicolai/Downloads/example.txt
+examples: ./.resources/Upload File.resources/examples
+order: 2000

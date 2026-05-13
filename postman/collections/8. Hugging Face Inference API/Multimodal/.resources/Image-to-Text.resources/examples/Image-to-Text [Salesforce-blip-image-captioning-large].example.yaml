@@ -1,0 +1,39 @@
+$kind: http-example
+name: Image-to-Text [Salesforce/blip-image-captioning-large]
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: Salesforce/blip-image-captioning-large
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/San_Diego_Zoo_Avril_2013_05.JPG/1200px-San_Diego_Zoo_Avril_2013_05.JPG"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 09 Oct 2023 16:24:14 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-sha: e33defe055114d86bec9c0705b71e590cfc0694c
+    access-control-allow-credentials: "true"
+    server: uvicorn
+    x-compute-type: cpu
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "2.838"
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-request-id: 61Zm5npecxUbn6J1NNw1W
+    x-compute-characters: "-1"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "generated_text": "there is a antelope sitting in the grass near a rock wall"
+          }
+      ]
+order: 1000

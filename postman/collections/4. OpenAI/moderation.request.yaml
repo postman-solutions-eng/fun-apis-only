@@ -1,0 +1,15 @@
+$kind: http-request
+description: |-
+  Classifies if text violates OpenAI's Content Policy
+
+  [https://beta.openai.com/docs/api-reference/moderations](https://beta.openai.com/docs/api-reference/moderations)
+url: "{{baseUrl}}/moderations"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "input": "I want to kill them."
+    }
+examples: ./.resources/moderation.resources/examples
+order: 5000

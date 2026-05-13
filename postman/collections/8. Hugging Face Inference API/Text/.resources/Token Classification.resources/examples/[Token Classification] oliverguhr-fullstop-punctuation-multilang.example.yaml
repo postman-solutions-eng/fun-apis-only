@@ -1,0 +1,99 @@
+$kind: http-example
+name: "[Token Classification] oliverguhr/fullstop-punctuation-multilang-large"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: oliverguhr/fullstop-punctuation-multilang-large
+  body:
+    type: json
+    content: |
+      {
+        "inputs": "here is a longer sentence for you I hope it meets your expectations sometimes writing without punctuation can create a sense of flow and continuity in the text allowing ideas to blend seamlessly as the words carry the reader along on a journey through the realm of language and expression"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:36:31 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-characters: "288"
+    access-control-allow-credentials: "true"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-compute-type: cpu
+    x-sha: 3f0ece26f8699c18fc966b39b2887fc9b27e7f4a
+    x-request-id: YHg6dpl5vF41Cydn7xPnX
+    server: uvicorn
+    x-compute-time: "0.231"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "entity_group": "0",
+              "score": 0.9999449849128723,
+              "word": "here is a longer sentence for",
+              "start": 0,
+              "end": 29
+          },
+          {
+              "entity_group": ".",
+              "score": 0.9658686518669128,
+              "word": "you",
+              "start": 29,
+              "end": 33
+          },
+          {
+              "entity_group": "0",
+              "score": 0.999981701374054,
+              "word": "I hope it meets your",
+              "start": 33,
+              "end": 54
+          },
+          {
+              "entity_group": ".",
+              "score": 0.9953101277351379,
+              "word": "expectations",
+              "start": 54,
+              "end": 67
+          },
+          {
+              "entity_group": ",",
+              "score": 0.5329396724700928,
+              "word": "sometimes",
+              "start": 67,
+              "end": 77
+          },
+          {
+              "entity_group": "0",
+              "score": 0.9999722838401794,
+              "word": "writing without punctuation can create a sense of flow and continuity in the",
+              "start": 77,
+              "end": 154
+          },
+          {
+              "entity_group": ",",
+              "score": 0.9883745908737183,
+              "word": "text",
+              "start": 154,
+              "end": 159
+          },
+          {
+              "entity_group": "0",
+              "score": 0.9956034421920776,
+              "word": "allowing ideas to blend seamlessly as the words carry the reader along on a journey through the realm of language and",
+              "start": 159,
+              "end": 277
+          },
+          {
+              "entity_group": ".",
+              "score": 0.9998273253440857,
+              "word": "expression",
+              "start": 277,
+              "end": 288
+          }
+      ]
+order: 5000

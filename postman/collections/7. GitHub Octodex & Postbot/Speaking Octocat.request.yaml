@@ -1,0 +1,11 @@
+$kind: http-request
+description: |-
+  ... including [Postbot](https://blog.postman.com/introducing-postbot-postmans-new-ai-assistant/) - Postman's AI based helper to visualize API responses and write test cases. But let's listen what Mona has to say herself by using its API 😻❤️🤖.
+
+  The Octocat ASCII-Art API call is part of the [popular GitHub REST API](https://docs.github.com/en/rest?apiVersion=2022-11-28), which belongs to one of the most viewed [dev workspaces](https://www.postman.com/api-evangelist/workspace/github) in the [Postman public API network](https://www.postman.com/explore).
+url: https://api.github.com/octocat?s=Mona and Postbot are great friends
+method: GET
+queryParams:
+  s: Mona and Postbot are great friends
+examples: ./.resources/Speaking Octocat.resources/examples
+order: 1000

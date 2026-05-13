@@ -1,0 +1,26 @@
+$kind: http-request
+description: |-
+  **Text-to-Image** models generate images froma text prompt.
+
+  See available [Text-to-Image models](https://huggingface.co/models?pipeline_tag=text-to-image&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5) | Stable Diffusion image generator from prompt |
+  |  |  |
+  |  |  |
+  |  |  |
+  |  |  |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: runwayml/stable-diffusion-v1-5
+body:
+  type: json
+  content: |-
+    {
+      "inputs": "A whimsical scene of animals hosting a tea party at the bottom of the ocean"
+    }
+order: 2000

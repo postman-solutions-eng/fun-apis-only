@@ -1,0 +1,116 @@
+$kind: http-example
+name: "[Text Classification] papluca/xlm-roberta-base-language-detection"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: papluca/xlm-roberta-base-language-detection
+  body:
+    type: json
+    content: |-
+      {
+          "text": "I am not having a great day."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:06:31 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-characters: "28"
+    x-compute-time: "0.027"
+    x-request-id: KGLr8f7Rp_c95hPgZ3oWY
+    access-control-allow-credentials: "true"
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-sha: a5d0aa75d23efee145d767a8eb0fbe22082a9c53
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    server: uvicorn
+    x-compute-type: cpu
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "label": "en",
+              "score": 0.9934165477752686
+          },
+          {
+              "label": "ur",
+              "score": 0.0007095815963111818
+          },
+          {
+              "label": "sw",
+              "score": 0.0005234223208390176
+          },
+          {
+              "label": "nl",
+              "score": 0.0005206138011999428
+          },
+          {
+              "label": "el",
+              "score": 0.00046754718641750515
+          },
+          {
+              "label": "es",
+              "score": 0.00045451478217728436
+          },
+          {
+              "label": "tr",
+              "score": 0.0004543590184766799
+          },
+          {
+              "label": "vi",
+              "score": 0.00044492929009720683
+          },
+          {
+              "label": "ru",
+              "score": 0.00037606016849167645
+          },
+          {
+              "label": "fr",
+              "score": 0.00033126890775747597
+          },
+          {
+              "label": "de",
+              "score": 0.00031401411979459226
+          },
+          {
+              "label": "th",
+              "score": 0.0003032730892300606
+          },
+          {
+              "label": "it",
+              "score": 0.00029440299840644
+          },
+          {
+              "label": "pt",
+              "score": 0.00025566789554432034
+          },
+          {
+              "label": "ja",
+              "score": 0.0002538261469453573
+          },
+          {
+              "label": "bg",
+              "score": 0.00021057155390735716
+          },
+          {
+              "label": "pl",
+              "score": 0.00020669201330747455
+          },
+          {
+              "label": "hi",
+              "score": 0.0001813812559703365
+          },
+          {
+              "label": "zh",
+              "score": 0.00014600131544284523
+          },
+          {
+              "label": "ar",
+              "score": 0.00013524707173928618
+          }
+      ]
+order: 3000

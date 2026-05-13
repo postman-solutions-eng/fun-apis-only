@@ -1,0 +1,5 @@
+$kind: http-request
+url: https://whoa.onrender.com/whoas/movies
+method: GET
+examples: ./.resources/movies.resources/examples
+order: 1000

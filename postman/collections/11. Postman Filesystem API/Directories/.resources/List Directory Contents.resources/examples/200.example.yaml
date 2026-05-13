@@ -1,0 +1,49 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/directories/hihi"
+  method: GET
+  headers:
+    Authorization: Bearer {{token}}
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Security-Policy: "default-src 'self';style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;script-src 'self';img-src 'self' data: https:;connect-src 'self';font-src 'self' https://cdn.jsdelivr.net;object-src 'none';media-src 'self';frame-src 'none';base-uri 'self';form-action 'self';frame-ancestors 'self';script-src-attr 'none';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=15552000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Access-Control-Allow-Origin: "*"
+    Content-Type: application/json; charset=utf-8
+    Content-Length: "214"
+    ETag: W/"d6-Te4SvNtTGGaTBpuoQhhKcaHTT4k"
+    Date: Tue, 18 Feb 2025 09:24:43 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "name": "file.txt",
+              "path": "hihi/file.txt",
+              "isDirectory": false,
+              "size": 13,
+              "modified": "2025-02-18T09:11:20.999Z"
+          },
+          {
+              "name": "haha",
+              "path": "hihi/haha",
+              "isDirectory": true,
+              "size": 64,
+              "modified": "2025-02-18T09:12:07.866Z"
+          }
+      ]
+order: 3000

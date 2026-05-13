@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{baseUrl}}/chat/completions"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-3.5-turbo",
+        "messages" : [
+            {"role": "system", "content": "You are a helpful assistant who answers questions in english poem form"},
+            {"role": "user", "content": "What are the 5 most important HTTP request methods and their usage?"}
+        ],
+        "temperature": 0.3,
+        "max_tokens": 300
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+          pm.expect(jsonData).to.be.an('object');
+          pm.visualizer.set(`<textarea style="width: 100vw; height: 100vh; font-family: monospace;">${pm.response.json().choices[0].message.content}</textarea>`);
+      });
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+    language: text/javascript
+examples: ./.resources/chat rhyming (ChatGPT).resources/examples
+order: 6000

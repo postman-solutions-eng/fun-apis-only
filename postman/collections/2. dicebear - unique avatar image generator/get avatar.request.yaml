@@ -1,0 +1,54 @@
+$kind: http-request
+url: https://api.dicebear.com/7.x/:style/svg?seed=clairefro&hair=long02
+method: GET
+queryParams:
+  - key: seed
+    value: clairefro
+    description: unique string seed, such as a username
+  - key: hair
+    value: long02
+    description: long01 | long02 | long03
+  - key: flip
+    value: "true"
+    disabled: true
+    description: horizontal flip
+  - key: scale
+    value: "50"
+    disabled: true
+    description: 0-200
+  - key: radius
+    value: "50"
+    disabled: true
+    description: 0-50
+  - key: size
+    value: "250"
+    disabled: true
+    description: N px
+  - key: backgroundColor
+    value: b6e3f4
+    disabled: true
+    description: ^(transparent|[a-fA-F0-9]{6})$
+  - key: backgroundType
+    value: gradientLinear
+    disabled: true
+    description: gradientLinear | solid
+  - key: translateX
+    value: "-50"
+    disabled: true
+    description: -100 - 100
+  - key: translateY
+    value: "50"
+    disabled: true
+    description: -50 - 50
+  - key: accessories
+    value: glasses
+    disabled: true
+    description: (depends on style) eyepatch,glasses,glasses2 glasses3,glasses4,glasses5  sunglasses,sunglasses2
+pathVariables:
+  - key: style
+    value: open-peeps
+    description: https://www.dicebear.com/styles/
+body:
+  type: json
+  content: ""
+order: 1000

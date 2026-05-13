@@ -1,0 +1,50 @@
+$kind: http-example
+request:
+  url: https://whoa.onrender.com/whoas/random
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 01 Apr 2024 15:31:16 GMT
+    Content-Type: application/json; charset=utf-8
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    CF-Ray: 86d9a009fba943ca-EWR
+    CF-Cache-Status: DYNAMIC
+    Access-Control-Allow-Origin: "*"
+    ETag: W/"47d-Xl6e+NDjrte8G82+ptOrN0oirgg"
+    Vary: Accept-Encoding
+    rndr-id: 1c7f5c23-b412-48fc
+    x-powered-by: Express
+    x-render-origin-server: Render
+    Server: cloudflare
+    Content-Encoding: br
+    alt-svc: h3=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "movie": "Bill & Ted Face the Music",
+              "year": 2020,
+              "release_date": "2020-08-28",
+              "director": "Dean Parisot",
+              "character": "Ted Logan",
+              "movie_duration": "01:31:53",
+              "timestamp": "00:52:06",
+              "full_line": "Whoa.",
+              "current_whoa_in_movie": 4,
+              "total_whoas_in_movie": 5,
+              "whoa_grouping": null,
+              "poster": "https://images.ctfassets.net/a6ek464hq2lg/7uQk4GkGE6pklfiuTZ7KSt/843731f596de16ae363cdfaf636952d0/4V2nTPfeB59TcqJcUfQ9ziTi7VN.jpg",
+              "video": {
+                  "1080p": "https://videos.ctfassets.net/a6ek464hq2lg/2UsRqCmlXfePNBEyo4aaXu/bfb9861f8a262451f3d694768706fd73/Bill___Ted_Face_the_Music_4__1080p_.mp4",
+                  "720p": "https://videos.ctfassets.net/a6ek464hq2lg/3EIyG006TmWdH6U5amRT12/40c960abdadd52c5d58fb48322f1ad4a/Bill___Ted_Face_the_Music_4__720p_.mp4",
+                  "480p": "https://videos.ctfassets.net/a6ek464hq2lg/3GxgDmABxwnH8PYzvMW2DP/aae6996f405f67ce1c06bf6b262531eb/Bill___Ted_Face_the_Music_4__480p_.mp4",
+                  "360p": "https://videos.ctfassets.net/a6ek464hq2lg/6uNZIDEEaTaUVe4D8PEWbU/6c0c3738f36b8cf831cbc1cff157f551/Bill___Ted_Face_the_Music_4__360p_.mp4"
+              },
+              "audio": "https://assets.ctfassets.net/a6ek464hq2lg/22PxIuCRGLRtEJOZrBXin8/fa1184f0c0d6a02a9142fcf1b32bd389/Bill___Ted_Face_the_Music_4.mp3"
+          }
+      ]
+order: 1000

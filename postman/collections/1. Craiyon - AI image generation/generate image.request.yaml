@@ -1,0 +1,46 @@
+$kind: http-request
+description: |-
+  Edit the `prompt` to your wildest imaginiation and send this request. Check the visualizer tab to see your creations
+
+  _Request may take up to about 3 minutes... it's alotta compute_
+url: https://backend.craiyon.com/generate
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "prompt": "Mr. Peanut riding the subway"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = pm.response.json()
+
+      const { images } = body
+      const prompt = JSON.parse(pm.request.body.raw).prompt
+
+
+
+      const template = `
+      <style>
+      #grid {
+          display: grid;
+          grid-gap: 1rem;
+          grid-template-columns: 1fr 1fr 1fr;
+      }
+      img {
+          width: 256px 
+      }
+      </style>
+
+      <p><strong>Prompt: </strong>{{prompt}}</p>
+      <div id="grid">
+      {{#each images}}
+        <img src="data:image/png;base64,{{this}}"/>
+      {{/each}}
+      </div>
+      `
+
+      pm.visualizer.set(template, { images, prompt })
+    language: text/javascript
+order: 1000

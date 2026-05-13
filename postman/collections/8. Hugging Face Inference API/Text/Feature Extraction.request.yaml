@@ -1,0 +1,25 @@
+$kind: http-request
+description: |-
+  **Feature extraction** is the process of finding the most important features in a data set and transforming them into a format that can be used by a machine learning algorithm.
+
+  These models return a two-dimensional **feature matrix** where each row represents a data point and each column represents a feature. The values in the matrix represent the strength of the relationship between the data point and the feature.
+
+  See available [Feature Extraction models](https://huggingface.co/models?pipeline_tag=feature-extraction&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [facebook/bart-large](https://huggingface.co/facebook/bart-large) | Text-To-Text Transfer Transformer |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: facebook/bart-large
+body:
+  type: json
+  content: |-
+    {
+      "inputs": "What does this model do?"
+    }
+examples: ./.resources/Feature Extraction.resources/examples
+order: 9000

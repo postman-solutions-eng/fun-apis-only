@@ -1,0 +1,94 @@
+$kind: http-request
+description: |-
+  Find flight data by ICAO24 code and timeframe.  
+
+  [Search aircraft ICO codes here](https://opensky-network.org/aircraft-database)
+
+  ## Visualize
+
+  Click the "Visualize" tab in the response to see a human-friendly view of the flight data.
+
+  <img src="https://content.pstmn.io/a2386f15-e563-4d1e-bba7-e843f791ea98/aW1hZ2UucG5n" alt="" height="884" width="1144">
+url: "{{baseUrl}}/flights/aircraft?icao24=a835af&begin=1673814010&end={{$timestamp}}"
+method: GET
+queryParams:
+  - key: icao24
+    value: a835af
+    description: "ex: a835af"
+  - key: begin
+    value: "1673814010"
+    description: "epoch time. (max begin-end interval: 30 days)"
+  - key: end
+    value: "{{$timestamp}}"
+    description: "epoch time. (max begin-end interval: 30 days)"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = pm.response.json()
+
+      /** Util */
+      const toLocalUtc = (timestamp) => new Date(timestamp * 1000).toLocaleString('en-US', { 
+              timeZone: 'UTC', 
+              month: "short",    
+              year: "numeric",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric"
+          })
+      /** End util */
+
+      const icao24 = pm.request.url.query.get("icao24")
+      const begin = pm.request.url.query.get("begin")
+      const end = pm.request.url.query.get("end")
+      const beginLocaleUtc = toLocalUtc(begin)
+      const endLocaleUtc = toLocalUtc(end)
+
+      const flights = body.map(d => {
+          return {
+              ...d, 
+              estDepartureAirport: d.estDepartureAirport || "?",
+              estArrivalAirport: d.estArrivalAirport || "?",
+              firstSeenIso: new Date(d.firstSeen * 1000),
+              lastSeenIso: new Date(d.lastSeen * 1000),
+              firstSeenLocaleUtc: toLocalUtc(d.firstSeen),
+              lastSeenLocaleUtc: toLocalUtc(d.lastSeen),
+              elapsed: Math.round((d.lastSeen - d.firstSeen) / 60) 
+          }
+      })
+
+      const template = `
+      <style>
+      td, th {
+          padding: 1rem;
+      }
+      </style>
+
+      <h1>Flights for {{icao24}}</h2>
+      <p>between {{beginLocaleUtc}} UTC and {{endLocaleUtc}} UTC</p>
+        
+      <table>
+       <tr>
+         <th>Segment</th>
+         <th>First seen (UTC)</th>
+         <th>Last seen (UTC)</th>
+         <th>Elapsed</th>
+       </tr>
+       {{#each flights}}
+       <tr>
+         <td><strong>{{this.estDepartureAirport}} ✈ {{estArrivalAirport}}</strong></td>
+         <td>{{this.firstSeenLocaleUtc}}</td>
+         <td>{{this.lastSeenLocaleUtc}}</td>
+         <td>{{this.elapsed}}mins</td>
+       </tr>
+       {{/each}}
+      </table>
+      `
+
+      pm.visualizer.set(template, { 
+          flights, 
+          beginLocaleUtc, 
+          endLocaleUtc, 
+          icao24 })
+    language: text/javascript
+examples: ./.resources/flights by aircraft.resources/examples
+order: 2000

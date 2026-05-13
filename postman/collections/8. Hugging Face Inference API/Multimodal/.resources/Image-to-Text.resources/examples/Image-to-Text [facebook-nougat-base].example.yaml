@@ -1,0 +1,39 @@
+$kind: http-example
+name: Image-to-Text [facebook/nougat-base]
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: facebook/nougat-base
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://data2.unhcr.org/images/documents/big_4cda85d892a5c0b5dd63b510a9c83e9c9d06e739.jpg"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 09 Oct 2023 16:29:10 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-type: cpu
+    x-compute-time: "2.323"
+    access-control-allow-credentials: "true"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    server: uvicorn
+    x-sha: e5024ee9e80e82f7700ca362cf542f7b84be76e3
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-request-id: LTlC93NI3QRK6II3eS6Fh
+    x-compute-characters: "-1"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "generated_text": "### Q&A: Access to Education\n\nInformation for field staff and refugee parents\n"
+          }
+      ]
+order: 2000

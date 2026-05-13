@@ -1,0 +1,46 @@
+$kind: http-example
+name: "[Sentence Similarity] sentence-transformers/all-MiniLM-L6-v2"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: sentence-transformers/all-MiniLM-L6-v2
+  body:
+    type: json
+    content: |-
+      {
+          "inputs": {
+              "source_sentence": "That is a happy person",
+              "sentences": [
+                  "That is a happy dog",
+                  "That is a very happy person",
+                  "Today is a sunny day"
+              ]
+          }
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Wed, 16 Aug 2023 14:05:20 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-allow-credentials: "true"
+    x-request-id: IPI9Ri0LTyGD7iBo6gaSL
+    x-compute-type: cpu
+    x-sha: 7dbbc90392e2f80f3d3c277d6e90027e55de9125
+    server: uvicorn
+    x-compute-characters: "88"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-compute-time: "0.315"
+  body:
+    type: json
+    content: |-
+      [
+          0.6945773363113403,
+          0.9429150223731995,
+          0.256876140832901
+      ]
+order: 1000

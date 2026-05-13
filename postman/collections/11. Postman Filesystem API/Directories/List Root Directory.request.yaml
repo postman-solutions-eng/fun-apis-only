@@ -1,0 +1,19 @@
+$kind: http-request
+description: |-
+  This endpoint makes an HTTP GET request to retrieve a list of all entries in the root data directory, including ordinary files and subdirectories. The response will be in JSON format and will include the name, path, whether it is a directory, size, and modification details for each entry.
+
+  - "name": (string) The name of the directory.
+      
+  - "path": (string) The path of the directory.
+      
+  - "isDirectory": (boolean) Indicates whether the item is a directory.
+      
+  - "size": (number) The size of the directory.
+      
+  - "modified": (string) The date when the directory was last modified.
+url: "{{baseUrl}}/api/directories"
+method: GET
+headers:
+  Authorization: Bearer {{token}}
+examples: ./.resources/List Root Directory.resources/examples
+order: 2000

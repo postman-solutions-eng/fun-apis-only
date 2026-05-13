@@ -1,0 +1,13 @@
+$kind: http-request
+description: Creates a completion for the provided prompt and parameters.
+url: "{{sunoAIUrl}}/api/get_limit"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Response status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: ./.resources/Retrieve Suno AI API Status.resources/examples
+order: 5000

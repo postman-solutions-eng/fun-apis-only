@@ -1,0 +1,31 @@
+$kind: http-request
+url: "{{baseUrl}}/companies"
+method: GET
+auth:
+  type: apikey
+  credentials:
+    value: "{{OpenAIToken}}"
+    key: X-API-KEY
+scripts:
+  - type: afterResponse
+    code: |+
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+      var jsonData = pm.response.json();
+      var company = pm.collectionVariables.get("company");
+
+      // iterate through the response and filter all the items where company name is fuzzy matched the company variable
+      var filtered = jsonData.filter(function (item) {
+        return item.name.toLowerCase().includes(company.toLowerCase());
+      });
+
+      pm.test("Tests should not error out", function () {
+        pm.expect(filtered.length).to.gte(0);
+      });
+
+
+
+    language: text/javascript
+order: 2000

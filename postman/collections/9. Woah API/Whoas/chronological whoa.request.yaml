@@ -1,0 +1,5 @@
+$kind: http-request
+url: https://whoa.onrender.com/whoas/ordered/0
+method: GET
+examples: ./.resources/chronological whoa.resources/examples
+order: 2000

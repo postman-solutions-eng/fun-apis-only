@@ -1,0 +1,55 @@
+$kind: http-request
+name: Where's Waldo?
+url: "{{baseUrl}}/chat/completions"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-4-vision-preview",
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                        {
+                            "type": "text",
+                            "text": "What’s in this image? Can you find Waldo in it?"
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": "https://blog.kuula.co/assets/waldo/header.png"
+                        }
+                ]
+            }
+        ],
+        "temperature": 1,
+        "top_p": 1,
+        "n": 1,
+        "stream": false,
+        "max_tokens": 250,
+        "presence_penalty": 0,
+        "frequency_penalty": 0
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+              pm.expect(jsonData).to.be.an('object');
+              var jsonRequestBody = JSON.parse(pm.request.body.raw);
+              pm.visualizer.set(`
+                  <div style="display: flex;">
+                      <img src="${jsonRequestBody.messages[0].content[1].image_url}" alt="Find Waldo" style="max-width: 400px; max-height: 400px;"/>
+                      <textarea style="width: 100%; font-family: monospace;">${pm.response.json().choices[0].message.content}</textarea>
+                  </div>
+              `);
+          });
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+    language: text/javascript
+examples: ./.resources/Where's Waldo-.resources/examples
+order: 14000

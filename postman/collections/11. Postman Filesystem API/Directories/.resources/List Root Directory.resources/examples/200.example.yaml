@@ -1,0 +1,75 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/directories"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Security-Policy: "default-src 'self';style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;script-src 'self';img-src 'self' data: https:;connect-src 'self';font-src 'self' https://cdn.jsdelivr.net;object-src 'none';media-src 'self';frame-src 'none';base-uri 'self';form-action 'self';frame-ancestors 'self';script-src-attr 'none';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=15552000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Access-Control-Allow-Origin: "*"
+    Content-Type: application/json; charset=utf-8
+    Content-Length: "688"
+    ETag: W/"2b0-N3zzfpH9MAwF8HfhRecrefcbF7w"
+    Date: Tue, 18 Feb 2025 09:20:24 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "name": "deepseek-qwen.png",
+              "path": "deepseek-qwen.png",
+              "isDirectory": false,
+              "size": 518483,
+              "modified": "2025-02-18T09:00:40.559Z"
+          },
+          {
+              "name": "file.txt",
+              "path": "file.txt",
+              "isDirectory": false,
+              "size": 20,
+              "modified": "2025-02-18T09:16:57.376Z"
+          },
+          {
+              "name": "file2.txt",
+              "path": "file2.txt",
+              "isDirectory": false,
+              "size": 13,
+              "modified": "2025-02-18T09:16:21.369Z"
+          },
+          {
+              "name": "hihi",
+              "path": "hihi",
+              "isDirectory": true,
+              "size": 128,
+              "modified": "2025-02-18T09:12:07.866Z"
+          },
+          {
+              "name": "hoho",
+              "path": "hoho",
+              "isDirectory": true,
+              "size": 64,
+              "modified": "2025-02-18T08:59:54.532Z"
+          },
+          {
+              "name": "johannes-wearedevelopers.png",
+              "path": "johannes-wearedevelopers.png",
+              "isDirectory": false,
+              "size": 948054,
+              "modified": "2025-02-18T09:01:23.591Z"
+          }
+      ]
+order: 1000

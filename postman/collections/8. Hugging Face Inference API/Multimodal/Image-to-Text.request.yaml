@@ -1,0 +1,28 @@
+$kind: http-request
+description: |-
+  **Image-to-Text** models provide text captions that describe images, or reproduce text that was submitted in an image format such as a PDF.
+
+  Image can be a link or base64
+
+  See available [Image-to-Text models](https://huggingface.co/models?pipeline_tag=image-to-text&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [Salesforce/blip-image-captioning-large](https://huggingface.co/Salesforce/blip-image-captioning-large) | Image captions |
+  | [facebook/nougat-base](https://huggingface.co/facebook/nougat-base) | PDF to markdown |
+  | [nlpconnect/vit-gpt2-image-captioning](https://huggingface.co/nlpconnect/vit-gpt2-image-captioning) | Image captions |
+  | [microsoft/trocr-small-handwritten](https://huggingface.co/microsoft/trocr-small-handwritten) | Handwriting intepretation |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: Salesforce/blip-image-captioning-large
+body:
+  type: json
+  content: |-
+    {
+      "inputs": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/San_Diego_Zoo_Avril_2013_05.JPG/1200px-San_Diego_Zoo_Avril_2013_05.JPG"
+    }
+examples: ./.resources/Image-to-Text.resources/examples
+order: 1000

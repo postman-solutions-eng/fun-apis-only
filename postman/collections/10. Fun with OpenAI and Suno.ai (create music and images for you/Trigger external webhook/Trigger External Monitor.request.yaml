@@ -1,0 +1,22 @@
+$kind: http-request
+url: https://newman-api.getpostman.com/run/24483733/3d64b349-6308-4217-86e9-458e52a4d442
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "GITHUB_USERNAME": "{{GITHUB_USERNAME}}",
+        "baseUrl": "{{baseUrl}}",
+        "owner": "{{owner}}",
+        "repo": "{{repo}}",
+        "issue_number": "{{issue_number}}",
+        "GITHUB_API_TOKEN": "{{GITHUB_API_TOKEN}}",
+        "company": "{{company}}",
+        "material": "{{material}}",
+        "mode": "{{mode}}",
+        "OpenAIToken": "{{OpenAIToken}}",
+        "baseURL": "{{baseUrl}}",
+        "githubUrl": "{{githubUrl}}"
+    }
+examples: ./.resources/Trigger External Monitor.resources/examples
+order: 2000

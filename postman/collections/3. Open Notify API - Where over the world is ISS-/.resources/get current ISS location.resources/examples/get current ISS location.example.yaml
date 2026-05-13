@@ -1,0 +1,26 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/location"
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Server: nginx/1.10.3
+    Date: Fri, 14 May 2021 19:33:58 GMT
+    Content-Type: application/json
+    Content-Length: "113"
+    Connection: keep-alive
+    access-control-allow-origin: "*"
+  body:
+    type: json
+    content: |-
+      {
+          "iss_position": {
+              "latitude": "45.7611",
+              "longitude": "107.1151"
+          },
+          "timestamp": 1621020838,
+          "message": "success"
+      }
+order: 1000

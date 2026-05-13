@@ -1,0 +1,74 @@
+$kind: http-example
+request:
+  url: "{{openAIUrl}}/chat/completions"
+  method: POST
+  headers:
+    Content-Type: application/json
+    Accept: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-3.5-turbo",
+          "messages": [
+              {
+                  "role": "system",
+                  "content": "You are a helpful assistant acting like GitHub Co-Pilot who completes the source code a user provides by appending lines that match the comments and program structure the user provides as input"
+              },
+              {
+                  "role": "user",
+                  "content": "#Write a bill splitting program in Python\n#Prompt interactively on the console for total bill, percentage of tip (10,12 or 15 percent) and how many people there are to split the bill#As an example, if the bill was $150.00, split between 5 people, with 12% tip.\n#Each person should pay (150.00 / 5) * 1.12 = 33.6\n#Format the result to 2 decimal places = 33.60\n#Tip: There are 2 ways to round a number. \n#Write your code below this line :point_down:\n"
+              }
+          ],
+          "temperature": 0.3,
+          "max_tokens": 300
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 18 Apr 2023 11:46:27 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-allow-origin: "*"
+    Cache-Control: no-cache, must-revalidate
+    openai-model: gpt-3.5-turbo-0301
+    openai-organization: user-lryarsvrbjl30zf7hotgyuce
+    openai-processing-ms: "6386"
+    openai-version: 2020-10-01
+    strict-transport-security: max-age=15724800; includeSubDomains
+    x-ratelimit-limit-requests: "3500"
+    x-ratelimit-remaining-requests: "3499"
+    x-ratelimit-reset-requests: 17ms
+    x-request-id: 61d3976147b4a23e4b66d5e6ddf5dc19
+    CF-Cache-Status: DYNAMIC
+    Server: cloudflare
+    CF-RAY: 7b9caaaf5a88aca1-TXL
+    Content-Encoding: gzip
+    alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-76e4qfT9EKHGIyAOHmXuf1mL3Kcf6",
+          "object": "chat.completion",
+          "created": 1681818380,
+          "model": "gpt-3.5-turbo-0301",
+          "usage": {
+              "prompt_tokens": 179,
+              "completion_tokens": 98,
+              "total_tokens": 277
+          },
+          "choices": [
+              {
+                  "message": {
+                      "role": "assistant",
+                      "content": "total_bill = float(input(\"Enter the total bill amount: \"))\ntip_percentage = int(input(\"Enter the tip percentage (10, 12, or 15): \"))\nnum_people = int(input(\"Enter the number of people to split the bill: \"))\n\ntip = total_bill * (tip_percentage / 100)\ntotal_amount = total_bill + tip\namount_per_person = total_amount / num_people\n\nprint(\"Each person should pay: {:.2f}\".format(amount_per_person))"
+                  },
+                  "finish_reason": "stop",
+                  "index": 0
+              }
+          ]
+      }
+order: 1000

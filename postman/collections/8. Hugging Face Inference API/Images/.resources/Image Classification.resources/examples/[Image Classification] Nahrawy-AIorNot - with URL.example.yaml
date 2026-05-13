@@ -1,0 +1,44 @@
+$kind: http-example
+name: "[Image Classification] Nahrawy/AIorNot - with URL"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: Nahrawy/AIorNot
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://eco-cha.com/cdn/shop/products/Clay_Teapot_Lifestyle_01_-_1080px_1080x1080.jpg?v=1577463470"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Wed, 16 Aug 2023 16:00:54 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-allow-credentials: "true"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-type: cpu
+    x-compute-time: "0.255"
+    server: uvicorn
+    x-compute-characters: "-1"
+    x-request-id: dE_9kQGRLvW_QCsfdM1Ou
+    x-sha: 569e9f0798e4b20f10c3ec408e32c2316b9fa0bb
+    access-control-expose-headers: x-compute-type, x-compute-time
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "score": 0.8199145197868347,
+              "label": "real"
+          },
+          {
+              "score": 0.18008540570735931,
+              "label": "ai"
+          }
+      ]
+order: 4000

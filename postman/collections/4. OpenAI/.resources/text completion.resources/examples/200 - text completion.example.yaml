@@ -1,0 +1,64 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/completions"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-3.5-turbo-instruct",
+          "prompt":"A cute name for an icecream shop"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Thu, 28 Sep 2023 10:27:25 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-allow-origin: "*"
+    Cache-Control: no-cache, must-revalidate
+    openai-model: gpt-3.5-turbo-instruct
+    openai-organization: user-lryarsvrbjl30zf7hotgyuce
+    openai-processing-ms: "268"
+    openai-version: 2020-10-01
+    strict-transport-security: max-age=15724800; includeSubDomains
+    x-ratelimit-limit-requests: "3000"
+    x-ratelimit-limit-tokens: "250000"
+    x-ratelimit-limit-tokens_usage_based: "250000"
+    x-ratelimit-remaining-requests: "2999"
+    x-ratelimit-remaining-tokens: "249983"
+    x-ratelimit-remaining-tokens_usage_based: "249983"
+    x-ratelimit-reset-requests: 20ms
+    x-ratelimit-reset-tokens: 3ms
+    x-ratelimit-reset-tokens_usage_based: 3ms
+    x-request-id: 3321460ed8c5796b6a114fbabcfb02d9
+    CF-Cache-Status: DYNAMIC
+    Server: cloudflare
+    CF-RAY: 80db4b2be8217276-HAM
+    Content-Encoding: br
+    alt-svc: h3=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+          "id": "cmpl-83iWr5ZT2DpvMA4p6PNLnxKqPICqr",
+          "object": "text_completion",
+          "created": 1695896845,
+          "model": "gpt-3.5-turbo-instruct",
+          "choices": [
+              {
+                  "text": " could be \"Scoops & Smiles.\"",
+                  "index": 0,
+                  "logprobs": null,
+                  "finish_reason": "stop"
+              }
+          ],
+          "usage": {
+              "prompt_tokens": 8,
+              "completion_tokens": 10,
+              "total_tokens": 18
+          }
+      }
+order: 1000

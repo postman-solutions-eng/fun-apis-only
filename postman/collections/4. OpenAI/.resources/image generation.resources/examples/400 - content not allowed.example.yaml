@@ -1,0 +1,39 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/images/generations"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+          "prompt":"Elon Musk in a pumpkin carriage",
+          "n": 3,
+          "size": "256x256",
+          "response_format": "url"
+      }
+response:
+  statusCode: 400
+  statusText: BAD REQUEST
+  headers:
+    Date: Fri, 11 Nov 2022 22:54:30 GMT
+    Content-Type: application/json
+    Content-Length: "243"
+    Connection: keep-alive
+    Access-Control-Allow-Origin: "*"
+    OpenAI-Version: 2020-10-01
+    OpenAI-Organization: user-7yeujbtzbtmqivuqrnh2aeku
+    X-Request-ID: 34cdb37ba2028888a5aa5ad7e517206b
+    OpenAI-Processing-Ms: "83"
+    Strict-Transport-Security: max-age=15724800; includeSubDomains
+  body:
+    type: json
+    content: |-
+      {
+          "error": {
+              "code": null,
+              "message": "Your request was rejected as a result of our safety system. Your prompt may contain text that is not allowed by our safety system.",
+              "param": null,
+              "type": "invalid_request_error"
+          }
+      }
+order: 2000

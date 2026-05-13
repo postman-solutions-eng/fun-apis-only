@@ -1,0 +1,24 @@
+$kind: http-request
+description: |-
+  **Text-to-text** models generate text from text. Generally speaking this can include translation, question answering, summarization, etc., but the example models in this request focus on **text completion.**
+
+  See available [Text-to-Text models](https://huggingface.co/models?pipeline_tag=text2text-generation&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [google/flan-t5-xxl](https://huggingface.co/google/flan-t5-xxl) | Text-To-Text Transfer Transformer |
+  | [juierror/flan-t5-text2sql-with-schema-v2](https://huggingface.co/juierror/flan-t5-text2sql-with-schema-v2) | Specializes in SQL |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: google/flan-t5-xxl
+body:
+  type: json
+  content: |-
+    {
+      "inputs": "Please answer the following question. What is the boiling point of Nitrogen?"
+    }
+examples: ./.resources/Text-to-text.resources/examples
+order: 8000

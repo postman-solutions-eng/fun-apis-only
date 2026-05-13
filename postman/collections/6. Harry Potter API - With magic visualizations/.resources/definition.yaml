@@ -1,0 +1,32 @@
+$kind: collection
+description: |-
+  # Introduction
+
+  A simple JSON-based API for getting information on Harry Potter characters. Hosted at [https://hp-api.onrender.com.](https://hp-api.onrender.com.) GitHub repo [here](https://github.com/KostaSav/hp-api).
+
+  # Overview
+
+  - Using `GET All characters`, we can view everyone (people, animals, beasts) from the fantasy world of Harry Potter
+      
+  - Using `GET Hogwarts students` / `GET Hogwarts staff`, we can view characters who study or work at Hogwarts
+      
+  - Using `GET Characters in house`, we can view the particular characters who belong to one of the four houses (Gryffindor, Ravenclaw, Hufflepuff, Slytherin)
+      
+
+  # Visualization
+
+  Every request comes with a nice viualization in Postman, you need to switch to the Visualization tab once you have sent a response.
+
+  <img src="https://content.pstmn.io/bc2b974b-f4b7-4564-a94d-b9077cfa4bcf/aW1hZ2UucG5n" alt="Visualization%20of%20GET%20Characters%20in%20house" width="3576" height="1750">
+
+  # Authentication
+
+  No API key is required.
+
+  # Error Codes
+
+  - 404 Not Found: no path variable in `GET Characters in house`
+variables:
+  local: http://localhost:5000
+  heroku: http://hp-api.herokuapp.com
+  render: https://hp-api.onrender.com

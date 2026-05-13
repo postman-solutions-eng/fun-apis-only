@@ -1,0 +1,56 @@
+$kind: http-example
+name: "[Image Classification] jayanta/google-vit-base-patch16-224-face - with URL"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: jayanta/google-vit-base-patch16-224-face
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://www.byrdie.com/thmb/aZWxblVz7BMxeObHtJEKX_ddV3c=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Stocksy_txpce733110Uae300_Medium_4082489-df45caed45cd449b806f9ce16a20804a.jpg"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Wed, 16 Aug 2023 16:24:18 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-request-id: JRGBQKgUR_gUNMLSM1tYV
+    x-sha: d4a67dba6126b7b0e1f42ea7e53e63138852dd96
+    server: uvicorn
+    x-compute-type: cpu
+    x-compute-time: "0.200"
+    x-compute-characters: "-1"
+    access-control-expose-headers: x-compute-type, x-compute-time
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    access-control-allow-credentials: "true"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "score": 0.5361430048942566,
+              "label": "neutral"
+          },
+          {
+              "score": 0.22637306153774261,
+              "label": "sad"
+          },
+          {
+              "score": 0.12217643111944199,
+              "label": "happy"
+          },
+          {
+              "score": 0.049167320132255554,
+              "label": "surprise"
+          },
+          {
+              "score": 0.039690788835287094,
+              "label": "disgust"
+          }
+      ]
+order: 5000

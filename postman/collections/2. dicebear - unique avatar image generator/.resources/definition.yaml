@@ -1,0 +1,5 @@
+$kind: collection
+description: |-
+  an API that generates unique profile avatars based on a hash of any given user name. 
+
+  https://avatars.dicebear.com/docs/http-api

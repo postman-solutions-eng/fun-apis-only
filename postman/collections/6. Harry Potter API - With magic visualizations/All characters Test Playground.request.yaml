@@ -1,0 +1,17 @@
+$kind: http-request
+description: view all characters
+url: "{{render}}/api/characters"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |
+      // assume that Harry and Hermione are in the same house
+      pm.test("Check if Harry and Hermione are in the same house", function () {
+          var jsonData = pm.response.json();
+          var harry = jsonData.find(char => char.name === "Harry Potter");
+          var hermione = jsonData.find(char => char.name === "Hermione Granger");
+          pm.expect(harry.house).to.equal(hermione.house);
+          });
+    language: text/javascript
+examples: ./.resources/All characters Test Playground.resources/examples
+order: 2000

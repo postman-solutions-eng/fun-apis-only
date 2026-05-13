@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/audio/speech"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "model": "tts-1-hd",
+        "input": "OpenAI now also supports text to speech with two models: tts-1 and tts-1-hd. For real-time applications, the standard tts-1 model provides the lowest latency but at a lower quality than the tts-1-hd model. Due to the way the audio is generated, tts-1 is likely to generate content that has more static in certain situations than tts-1-hd. In some cases, the audio may not have noticeable differences depending on your listening device and the individual person. The input to generate the audio from can be up to 4096 characters. Supported voices are alloy, echo, fable, onyx, nova, and shimmer. Supported response formats are mp3, opus, aac, and flac. It is also possible to control the speed, select a value from 0.25 to 4.0. 1.0 is the default. There is no direct mechanism to control the emotional output of the audio generated. Certain factors may influence the output audio like capitalization or grammar but OpenAI's internal tests with these have yielded mixed results. Please note that OpenAI's Usage Policies require you to provide a clear disclosure to end users that the TTS voice they are hearing is AI-generated and not a human voice.",
+        "voice": "alloy",
+        "response_format": "mp3",
+        "speed": "1.1"
+    }
+order: 13000

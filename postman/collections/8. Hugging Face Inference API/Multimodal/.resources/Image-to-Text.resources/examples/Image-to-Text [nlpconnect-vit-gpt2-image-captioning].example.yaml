@@ -1,0 +1,39 @@
+$kind: http-example
+name: Image-to-Text [nlpconnect/vit-gpt2-image-captioning]
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: nlpconnect/vit-gpt2-image-captioning
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/San_Diego_Zoo_Avril_2013_05.JPG/1200px-San_Diego_Zoo_Avril_2013_05.JPG"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 09 Oct 2023 16:32:23 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-sha: dc68f91c06a1ba6f15268e5b9c13ae7a7c514084
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-request-id: HqFLavMjQVVWthVCa_2-7
+    server: uvicorn
+    x-compute-characters: "-1"
+    x-compute-type: cpu
+    access-control-allow-credentials: "true"
+    x-compute-time: "1.629"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "generated_text": "a large brown and white animal laying on top of a pile of rocks "
+          }
+      ]
+order: 3000

@@ -1,0 +1,30 @@
+$kind: http-request
+url: https://whoa.onrender.com/whoas/random
+method: GET
+queryParams:
+  - key: results
+    value: "5"
+    disabled: true
+    description: (optional) limit the number of results
+  - key: year
+    value: "2011"
+    disabled: true
+    description: (optional) year of film
+  - key: movie
+    value: the matrix
+    disabled: true
+    description: (optional) name of movie
+  - key: director
+    value: eli roth
+    disabled: true
+    description: (optional) name of director
+  - key: woah_in_movie
+    value: "2"
+    disabled: true
+    description: (optional) "whoa" by the number of its occurrence in a movie
+  - key: sort
+    value: movie
+    disabled: true
+    description: (optinal) order by property
+examples: ./.resources/random woah.resources/examples
+order: 1000

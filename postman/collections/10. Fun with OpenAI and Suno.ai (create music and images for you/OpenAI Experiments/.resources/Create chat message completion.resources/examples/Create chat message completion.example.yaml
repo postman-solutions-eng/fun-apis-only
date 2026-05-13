@@ -1,0 +1,78 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/chat/completions"
+  method: POST
+  headers:
+    Content-Type: application/json
+    Accept: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-3.5-turbo",
+          "messages": [
+              {
+                  "role": "user",
+                  "content": "Who won the world series in 2020?"
+              },
+              {
+                  "role": "assistant",
+                  "content": "The Los Angeles Dodgers won the World Series in 2020."
+              },
+              {
+                  "role": "user",
+                  "content": "Where was it played?"
+              }
+          ],
+          "temperature": 1,
+          "top_p": 1,
+          "n": 1,
+          "stream": false,
+          "max_tokens": 250,
+          "presence_penalty": 0,
+          "frequency_penalty": 0
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 20 Mar 2023 23:50:57 GMT
+    Content-Type: application/json
+    Content-Length: "360"
+    Connection: keep-alive
+    Access-Control-Allow-Origin: "*"
+    Cache-Control: no-cache, must-revalidate
+    Openai-Model: gpt-3.5-turbo-0301
+    Openai-Organization: user-ydfxhof885ycvb52zjw5ly51
+    Openai-Processing-Ms: "1800"
+    Openai-Version: 2020-10-01
+    Strict-Transport-Security: max-age=15724800; includeSubDomains
+    X-Ratelimit-Limit-Requests: "3500"
+    X-Ratelimit-Remaining-Requests: "3499"
+    X-Ratelimit-Reset-Requests: 17ms
+    X-Request-Id: 8506a913c39e706fede784458b254ca7
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-6wJZ9Ebt8puAO4zW3zUpgFwS8BfJB",
+          "object": "chat.completion",
+          "created": 1679356255,
+          "model": "gpt-3.5-turbo-0301",
+          "usage": {
+              "prompt_tokens": 45,
+              "completion_tokens": 19,
+              "total_tokens": 64
+          },
+          "choices": [
+              {
+                  "message": {
+                      "role": "assistant",
+                      "content": "The 2020 World Series was played in Arlington, Texas, at Globe Life Field."
+                  },
+                  "finish_reason": "stop",
+                  "index": 0
+              }
+          ]
+      }
+order: 1000

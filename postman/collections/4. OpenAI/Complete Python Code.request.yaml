@@ -1,0 +1,41 @@
+$kind: http-request
+url: "{{baseUrl}}/chat/completions"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-3.5-turbo",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful assistant acting like GitHub Co-Pilot who completes the source code a user provides by appending lines that match the comments and program structure the user provides as input"
+            },
+            {
+                "role": "user",
+                "content": "#Write a bill splitting program in Python\n#Prompt interactively on the console for total bill, percentage of tip (10,12 or 15 percent) and how many people there are to split the bill#As an example, if the bill was $150.00, split between 5 people, with 12% tip.\n#Each person should pay (150.00 / 5) * 1.12 = 33.6\n#Format the result to 2 decimal places = 33.60\n#Tip: There are 2 ways to round a number. \n#Write your code below this line :point_down:\n"
+            }
+        ],
+        "temperature": 0.3,
+        "max_tokens": 300
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+          pm.expect(jsonData).to.be.an('object');
+          pm.visualizer.set(`<textarea style="width: 100vw; height: 100vh; font-family: monospace;">${pm.response.json().choices[0].message.content}</textarea>`);
+      });
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+    language: text/javascript
+examples: ./.resources/Complete Python Code.resources/examples
+order: 7000

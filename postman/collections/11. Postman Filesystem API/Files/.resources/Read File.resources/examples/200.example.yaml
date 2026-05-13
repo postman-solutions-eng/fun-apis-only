@@ -1,0 +1,32 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/files/hihi/file.txt"
+  method: GET
+  headers:
+    Authorization: Bearer {{token}}
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Security-Policy: "default-src 'self';style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;script-src 'self';img-src 'self' data: https:;connect-src 'self';font-src 'self' https://cdn.jsdelivr.net;object-src 'none';media-src 'self';frame-src 'none';base-uri 'self';form-action 'self';frame-ancestors 'self';script-src-attr 'none';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=15552000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Access-Control-Allow-Origin: "*"
+    Content-Type: text/plain
+    Content-Length: "13"
+    Date: Tue, 18 Feb 2025 09:31:00 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: text
+    content: Hello, World!
+order: 1000

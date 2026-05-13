@@ -1,0 +1,48 @@
+$kind: http-example
+name: "[Text Classification] cardiffnlp/twitter-roberta-base-sentiment-latest"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: cardiffnlp/twitter-roberta-base-sentiment-latest
+  body:
+    type: json
+    content: |-
+      {
+          "text": "I am not having a great day."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:03:04 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-characters: "28"
+    x-request-id: M06RbJ0kg6EgWgcudleiZ
+    x-compute-type: cpu
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "0.040"
+    access-control-allow-credentials: "true"
+    x-sha: 4ba3d4463bd152c9e4abd892b50844f30c646708
+    access-control-expose-headers: x-compute-type, x-compute-time
+    server: uvicorn
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "label": "negative",
+              "score": 0.9095131158828735
+          },
+          {
+              "label": "neutral",
+              "score": 0.07618165761232376
+          },
+          {
+              "label": "positive",
+              "score": 0.01430517714470625
+          }
+      ]
+order: 1000

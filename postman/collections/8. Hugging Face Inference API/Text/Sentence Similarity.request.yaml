@@ -1,0 +1,31 @@
+$kind: http-request
+description: |-
+  **Sentence Similarity** models calculate how similar various sentences are to a given source sentence.
+
+  See available [Sentence Similarity models](https://huggingface.co/models?pipeline_tag=sentence-similarity&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [sentence-transformers/all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) | Calculates similarity of various sentences to a given source sentence |
+  | [intfloat/multilingual-e5-large](https://huggingface.co/intfloat/multilingual-e5-large) | Multi-lingual sentence similarity |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: sentence-transformers/all-MiniLM-L6-v2
+body:
+  type: json
+  content: |-
+    {
+        "inputs": {
+            "source_sentence": "That is a happy person",
+            "sentences": [
+                "That is a happy dog",
+                "That is a very happy person",
+                "Today is a sunny day"
+            ]
+        }
+    }
+examples: ./.resources/Sentence Similarity.resources/examples
+order: 10000

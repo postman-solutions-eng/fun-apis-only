@@ -1,0 +1,6 @@
+$kind: collection
+description: |-
+  Feed API with malcrafted, special, naughty strings derived from [https://github.com/minimaxir/big-list-of-naughty-strings/blob/master/blns.json](https://github.com/minimaxir/big-list-of-naughty-strings/blob/master/blns.jsonInspired)
+
+  Inspired from the [account takeover](https://twitter.com/samwcyo/status/1597695281881296897?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1597695281881296897%7Ctwgr%5E805e6c47a85cbb37a272edc531092b37ccf33686%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fsamcurry.net%2Fweb-hackers-vs-the-auto-industry%2F) at Hyundai using special strings.
+order: 4000

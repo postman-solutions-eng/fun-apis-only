@@ -1,0 +1,28 @@
+$kind: http-request
+description: |-
+  **Text classification** models classify text into one or more categories.  
+    
+  Available categories vary by model. For example, a model may specialize in sentiment analysis (negative/positive/neutral), source langauge, emotions, etc.
+
+  See available [Text Classification models](https://huggingface.co/models?pipeline_tag=text-classification&sort=trending)
+
+  ### Example models
+
+  | **model** | **description** |
+  | --- | --- |
+  | [SamLowe/roberta-base-go_emotions](https://huggingface.co/SamLowe/roberta-base-go_emotions) | Detects emotions in text based on go_emotions dataset for multi-label classification. |
+  | [cardiffnlp/twitter-roberta-base-sentiment-latest](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest) | Detects negative/neutral/positive sentiment |
+  | [papluca/xlm-roberta-base-language-detection](https://huggingface.co/papluca/xlm-roberta-base-language-detection?text=I'm+burnt+out) | Detects langauge of source text |
+  | [nlptown/bert-base-multilingual-uncased-sentiment](https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment) | Estimated 1-5 star product review ratings based on source text, multi-lingual |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: SamLowe/roberta-base-go_emotions
+body:
+  type: json
+  content: |-
+    {
+        "text": "I am not having a great day."
+    }
+examples: ./.resources/Text Classification.resources/examples
+order: 1000

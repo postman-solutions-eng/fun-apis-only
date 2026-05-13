@@ -1,0 +1,55 @@
+$kind: http-example
+request:
+  url: https://api.getpostman.com/webhooks?workspace={{workspaceId}}
+  method: POST
+  queryParams:
+    - key: workspace
+      value: "{{workspaceId}}"
+      description: |-
+        Optional. A workspace ID in which to create the webhook.
+
+        If you do not include this query parameter, the system creates the webhook in your "My Workspace" workspace.
+    - key: ""
+      value: ""
+      disabled: true
+  body:
+    type: json
+    content: |-
+      {
+          "webhook":{
+              "name": "{{webhookName}}",
+              "collection": "{{collectionUid}}"
+          }
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 09 Jan 2023 13:43:58 GMT
+    Content-Type: application/json; charset=utf-8
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    Server: nginx
+    x-frame-options: SAMEORIGIN
+    Access-Control-Allow-Origin: "*"
+    x-srv-trace: v=1;t=c7e1596d82e95a88
+    x-srv-span: v=1;s=04e3688269a85ccc
+    X-RateLimit-Limit: "300"
+    X-RateLimit-Remaining: "299"
+    X-RateLimit-Reset: "1673271897"
+    ETag: W/"150-aQrmG278K6W1AmYVEccZyGkQKnc"
+    Vary: Accept-Encoding
+    Content-Encoding: gzip
+  body:
+    type: json
+    content: |-
+      {
+          "webhook": {
+              "id": "1ed9023a-a863-4290-85cb-5e27cab17932",
+              "name": "Externally Triggered Monitor for A(i)ppealing Companies",
+              "collection": "24483733-6a545bfb-a72f-4ee8-a1fe-469a34d7cf8b",
+              "webhookUrl": "https://newman-api.getpostman.com/run/24483733/53397257-e8b0-4840-88cc-41d1327bf9e2",
+              "uid": "24483733-1ed9023a-a863-4290-85cb-5e27cab17932"
+          }
+      }
+order: 1000

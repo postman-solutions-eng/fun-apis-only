@@ -1,0 +1,64 @@
+$kind: http-example
+name: "[Token Classification] tomaarsen/span-marker-mbert-base-multinerd"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: tomaarsen/span-marker-mbert-base-multinerd
+  body:
+    type: json
+    content: |
+      {
+        "inputs": "Amelia Earhart flew her single-engine Lockheed Vega 5B across the Atlantic to Paris."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:24:47 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-characters: "84"
+    x-sha: 8b680f43706ec0274ada881a2813abc80df73352
+    x-compute-time: "0.577"
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-compute-type: cpu
+    server: uvicorn
+    access-control-allow-credentials: "true"
+    x-request-id: l1PgR10GEU07HzzoM7VUB
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "entity_group": "PER",
+              "word": "Amelia Earhart",
+              "start": 0,
+              "end": 14,
+              "score": 0.9999723434448242
+          },
+          {
+              "entity_group": "VEHI",
+              "word": "Lockheed Vega 5B",
+              "start": 38,
+              "end": 54,
+              "score": 0.9884653091430664
+          },
+          {
+              "entity_group": "LOC",
+              "word": "Atlantic",
+              "start": 66,
+              "end": 74,
+              "score": 0.9987020492553711
+          },
+          {
+              "entity_group": "LOC",
+              "word": "Paris",
+              "start": 78,
+              "end": 83,
+              "score": 0.9999233484268188
+          }
+      ]
+order: 1000

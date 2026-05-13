@@ -1,0 +1,77 @@
+$kind: http-example
+request:
+  url: "{{openAIUrl}}/chat/completions"
+  method: POST
+  headers:
+    Content-Type: application/json
+    Accept: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-3.5-turbo",
+          "messages": [
+              {
+                  "role": "system",
+                  "content": "You are a helpful assistant like GitHub Co-Pilot that understands source code and can explain it on a high level"
+              },
+              {
+                  "role": "user",
+                  "content": "Explain what the GitHub repository https://github.com/postman-solutions-eng/aippealing-companies-impl-openai is doing"
+              }
+          ],
+          "temperature": 0.3,
+          "max_tokens": 200
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Sat, 20 May 2023 20:40:23 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-allow-origin: "*"
+    Cache-Control: no-cache, must-revalidate
+    openai-model: gpt-3.5-turbo-0301
+    openai-organization: user-lryarsvrbjl30zf7hotgyuce
+    openai-processing-ms: "16743"
+    openai-version: 2020-10-01
+    strict-transport-security: max-age=15724800; includeSubDomains
+    x-ratelimit-limit-requests: "3500"
+    x-ratelimit-limit-tokens: "90000"
+    x-ratelimit-remaining-requests: "3499"
+    x-ratelimit-remaining-tokens: "89740"
+    x-ratelimit-reset-requests: 17ms
+    x-ratelimit-reset-tokens: 173ms
+    x-request-id: 9ee00b4cbdf2c8055099652238939cea
+    CF-Cache-Status: DYNAMIC
+    Server: cloudflare
+    CF-RAY: 7ca764936ab358f6-TXL
+    Content-Encoding: br
+    alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-7INexxZOQkkijIhOVrbJR0rnHCZl7",
+          "object": "chat.completion",
+          "created": 1684615207,
+          "model": "gpt-3.5-turbo-0301",
+          "usage": {
+              "prompt_tokens": 62,
+              "completion_tokens": 183,
+              "total_tokens": 245
+          },
+          "choices": [
+              {
+                  "message": {
+                      "role": "assistant",
+                      "content": "The GitHub repository https://github.com/postman-solutions-eng/aippealing-companies-impl-openai contains the implementation of a web application that uses OpenAI's GPT-3 language model to generate appealing company descriptions. The application takes a company name as input and generates a description of the company using GPT-3's natural language generation capabilities. \n\nThe repository contains the source code for the web application, including the backend server and the frontend user interface. The backend server is built using Node.js and Express, and it communicates with OpenAI's GPT-3 API to generate the company descriptions. The frontend user interface is built using React and allows users to input a company name and view the generated description.\n\nThe repository also includes documentation on how to set up and run the application locally, as well as information on how to obtain an OpenAI API key to use the GPT-3 API."
+                  },
+                  "finish_reason": "stop",
+                  "index": 0
+              }
+          ]
+      }
+order: 1000

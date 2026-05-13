@@ -1,0 +1,51 @@
+$kind: collection
+name: 10. Fun with OpenAI and Suno.ai (create music and images for your favorite company or sprots club)
+description: |-
+  This collection shows all kind of OpenAI and Postman related experiments, generating and modifying images and audio.
+
+  There are two large demos associated with it:
+
+  <video src="https://youtube.com/embed/ZxT6BVZLWII" width="340" height="170"></video>
+
+  The video above mostly covers song generation, image creation, editing and experiments analyzing audio streams (German but can have English subtitles turned on).
+
+  <video src="https://youtube.com/embed/df9tqGzxZnM" width="340" height="170"></video>
+
+  This video is English and focuses on image generation, Git integration, mocking and OpenAPI based design with Postman as well as the Postman API platform.
+
+  If you like to understand which OpenAI APIs can be used to implement the [A(i)ppealing companies API](https://), have a look at this collection. Its `OpenAI Experiments` folder shows the used API calls whereas the `API MashUp` folder chains multiple requests of the different APIs together by using collection variables and test scripts.
+
+  <img src="https://user-images.githubusercontent.com/1872314/210120972-e716e9b0-14bf-4a3a-9112-0047605082c2.png" alt="Generated%20Mock%20Response%20based%20on%20previous%20requests" width="1019">
+
+  You can get an OpenAI dev token and USD $5 of free credits on [https://beta.openai.com/](https://)
+variables:
+  openAIUrl: https://api.openai.com/v1
+  company: allianz
+  product: |-
+    
+
+    Allianz is primarily used for insurance
+  material: lego
+  markdown: ""
+  description: ""
+  city: ""
+  motto: ""
+  url: ""
+  companyId: ""
+  baseUrl: https://ac7da069-a1b9-4017-840a-0aea0c4c8cdc.mock.pstmn.io
+  companyRecord: ""
+  collectionId: 24483733-dbf631a1-0bbd-4e39-95f5-97723eeb7942
+  requestId: cd8b1fec-1b51-403c-82b7-169650c8bc19
+  responseId: 85a40283-c305-4467-9a90-b7382d904f4a
+  musicStyle: ""
+  musicText: ""
+  language: ""
+  songIds: ""
+  statusCode: ""
+  sunoAIUrl: https://suno-api-vercel-nine.vercel.app
+auth:
+  - id: ac985ede-8452-493c-83f6-ed69d065deae
+    type: bearer
+    name: bearer auth
+    credentials:
+      token: "{{OpenAIToken}}"

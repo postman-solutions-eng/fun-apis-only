@@ -1,0 +1,56 @@
+$kind: http-example
+name: "[Text Classification] nlptown/bert-base-multilingual-uncased-sentiment"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: nlptown/bert-base-multilingual-uncased-sentiment
+  body:
+    type: json
+    content: |-
+      {
+          "text": "This product wasn't the quality I expected for the price"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:08:48 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-expose-headers: x-compute-type, x-compute-time
+    access-control-allow-credentials: "true"
+    server: uvicorn
+    x-compute-time: "0.086"
+    x-compute-characters: "56"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-request-id: vTDxy9oF4qnGG1DxAUqW_
+    x-sha: edd66abe7147abbc7c23e0c339a5f617918d8060
+    x-compute-type: cpu
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "label": "2 stars",
+              "score": 0.45490172505378723
+          },
+          {
+              "label": "3 stars",
+              "score": 0.3053683340549469
+          },
+          {
+              "label": "1 star",
+              "score": 0.20813104510307312
+          },
+          {
+              "label": "4 stars",
+              "score": 0.0265424195677042
+          },
+          {
+              "label": "5 stars",
+              "score": 0.005056444555521011
+          }
+      ]
+order: 4000

@@ -1,0 +1,50 @@
+$kind: http-example
+name: "[Token Classification] tomaarsen/span-marker-bert-base-ncbi-disease"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: tomaarsen/span-marker-bert-base-ncbi-disease
+  body:
+    type: json
+    content: |
+      {
+        "inputs": "Canavan disease is inherited as an autosomal recessive trait that is caused by the deficiency of aspartoacylase (ASPA)."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:27:40 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-characters: "119"
+    x-sha: 77c83a7a901106f01fecae9200eb21efaa7d6881
+    x-request-id: cn3uqeBjY-8zheCepNZ3K
+    x-compute-type: cpu
+    server: uvicorn
+    access-control-expose-headers: x-compute-type, x-compute-time
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "0.304"
+    access-control-allow-credentials: "true"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "entity_group": "Disease",
+              "word": "Canavan disease",
+              "start": 0,
+              "end": 15,
+              "score": 0.9991452693939209
+          },
+          {
+              "entity_group": "Disease",
+              "word": "deficiency of aspartoacylase",
+              "start": 83,
+              "end": 111,
+              "score": 0.9726167321205139
+          }
+      ]
+order: 2000

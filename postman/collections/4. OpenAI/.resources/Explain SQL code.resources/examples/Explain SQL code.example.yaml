@@ -1,0 +1,74 @@
+$kind: http-example
+request:
+  url: "{{openAIUrl}}/chat/completions"
+  method: POST
+  headers:
+    Content-Type: application/json
+    Accept: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-3.5-turbo",
+          "messages": [
+              {
+                  "role": "system",
+                  "content": "You are a helpful assistant acting like GitHub Co-Pilot that will explain what the code the user is providing will do"
+              },
+              {
+                  "role": "user",
+                  "content": "SELECT DISTINCT department.name FROM department JOIN employee ON department.id = employee.department_id JOIN salary_payments ON employee.id = salary_payments.employee_id WHERE salary_payments.date BETWEEN '2020-06-01' AND '2020-06-30' GROUP BY department.name HAVING COUNT(employee.id) > 10; -- Explanation of the above query in human readable format -- "
+              }
+          ],
+          "temperature": 0.3,
+          "max_tokens": 300
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 18 Apr 2023 11:50:58 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-allow-origin: "*"
+    Cache-Control: no-cache, must-revalidate
+    openai-model: gpt-3.5-turbo-0301
+    openai-organization: user-lryarsvrbjl30zf7hotgyuce
+    openai-processing-ms: "13483"
+    openai-version: 2020-10-01
+    strict-transport-security: max-age=15724800; includeSubDomains
+    x-ratelimit-limit-requests: "3500"
+    x-ratelimit-remaining-requests: "3499"
+    x-ratelimit-reset-requests: 17ms
+    x-request-id: a343e0cfd365bf663a652334a7c73021
+    CF-Cache-Status: DYNAMIC
+    Server: cloudflare
+    CF-RAY: 7b9cb1254aadaca1-TXL
+    Content-Encoding: gzip
+    alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-76e976AcMlBrdgsoxjfQPOR9sjhk6",
+          "object": "chat.completion",
+          "created": 1681818645,
+          "model": "gpt-3.5-turbo-0301",
+          "usage": {
+              "prompt_tokens": 110,
+              "completion_tokens": 217,
+              "total_tokens": 327
+          },
+          "choices": [
+              {
+                  "message": {
+                      "role": "assistant",
+                      "content": "This SQL query retrieves the names of all departments that have more than 10 employees who received salary payments in the month of June 2020. \n\nTo achieve this, the query first joins the \"department\" table with the \"employee\" table on the \"id\" column of the former and the \"department_id\" column of the latter. Then, it joins the resulting table with the \"salary_payments\" table on the \"id\" column of the \"employee\" table and the \"employee_id\" column of the \"salary_payments\" table.\n\nNext, the query filters the results to only include salary payments made between June 1, 2020 and June 30, 2020 using the \"BETWEEN\" operator.\n\nThe query then groups the results by department name using the \"GROUP BY\" clause. The \"DISTINCT\" keyword is used to ensure that only unique department names are returned.\n\nFinally, the \"HAVING\" clause is used to filter the results to only include departments with more than 10 employees who received salary payments in June 2020."
+                  },
+                  "finish_reason": "stop",
+                  "index": 0
+              }
+          ]
+      }
+order: 1000

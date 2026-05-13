@@ -1,0 +1,43 @@
+$kind: http-request
+description: Creates a variation of a given image.
+url: "{{baseUrl}}/images/variations"
+method: POST
+body:
+  type: formdata
+  content:
+    - type: file
+      key: image
+      src: ""
+      description: The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask.
+    - type: text
+      key: n
+      value: "2"
+      description: The number of images to generate. Must be between 1 and 10.
+    - type: text
+      key: size
+      value: 1024x1024
+      description: The size of the generated images. Must be one of 256x256, 512x512, or 1024x1024.
+    - type: text
+      key: response_format
+      value: url
+      description: The format in which the generated images are returned. Must be one of url or b64_json.
+    - type: text
+      key: user
+      value: ""
+      description: A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
+      disabled: true
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = pm.response.json();
+
+      var html = '';
+
+      for (let i = 0; i < jsonData.data.length; i++) {
+          html += '<img src="' + jsonData.data[i].url + '" width="512">';
+      }
+
+      pm.visualizer.set(html);
+    language: text/javascript
+examples: ./.resources/Create image variation.resources/examples
+order: 11000

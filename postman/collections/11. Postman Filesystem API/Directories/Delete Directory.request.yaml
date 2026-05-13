@@ -1,0 +1,27 @@
+$kind: http-request
+description: |-
+  ### Delete Sub-Folder Directory
+
+  This endpoint is used to delete a sub-folder directory.
+
+  #### Response
+
+  The response for this request is a JSON object with the following schema:
+
+  ``` json
+  {
+    "type": "object",
+    "properties": {
+      "message": {
+        "type": "string"
+      }
+    }
+  }
+
+   ```
+url: "{{baseUrl}}/api/directories/sub-folder"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+examples: ./.resources/Delete Directory.resources/examples
+order: 4000

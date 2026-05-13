@@ -1,0 +1,6 @@
+$kind: collection
+description: |-
+  Generate a song text and music genre for a company in a given language with ChatGPT and Suno.ai. A fulll run through is in this video:
+
+  <video src="https://youtube.com/embed/ZxT6BVZLWII" width="340" height="170"></video>
+order: 1000

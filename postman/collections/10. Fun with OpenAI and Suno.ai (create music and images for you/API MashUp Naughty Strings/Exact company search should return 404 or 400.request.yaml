@@ -1,0 +1,31 @@
+$kind: http-request
+description: Get company and its a(i)ppealing associations
+url: "{{baseUrl}}/companies/:companyId?material=lego&mode=exact"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: material
+    value: lego
+    description: Material to use for the product
+  - key: mode
+    value: exact
+    description: Mode to use for the product, exact and fuzzy operate on the curated list of products, ai uses AI to generate all aspects of the product
+pathVariables:
+  - key: companyId
+    value: "{{company}}"
+    description: (Required) Company ID
+auth:
+  type: apikey
+  credentials:
+    value: "{{OpenAIToken}}"
+    key: X-API-KEY
+scripts:
+  - type: afterResponse
+    code: |
+      pm.test("Checking whether direct search reveals any result", function () {
+          // status code is either 200 or 404
+          pm.expect(pm.response.code).to.be.oneOf([404, 400]);
+      });
+    language: text/javascript
+order: 1000

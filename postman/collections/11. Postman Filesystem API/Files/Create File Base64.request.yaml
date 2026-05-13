@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{baseUrl}}/api/files/file-base64.txt"
+method: POST
+headers:
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+        "fileData": "xdata:application/json;base64,SGVsbG8sIFdvcmxkIQ=="
+    }
+examples: ./.resources/Create File Base64.resources/examples
+order: 3000

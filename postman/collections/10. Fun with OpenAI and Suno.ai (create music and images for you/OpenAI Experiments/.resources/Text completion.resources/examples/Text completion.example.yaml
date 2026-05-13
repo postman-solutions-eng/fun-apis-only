@@ -1,0 +1,65 @@
+$kind: http-example
+request:
+  url: "{{openAIUrl}}/completions"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+          "model": "text-davinci-003",
+          "prompt": "The specific product name or service, Volkswagen is mostly known for is ",
+          "temperature": 0.3,
+          "max_tokens": 70,
+          "frequency_penalty" : -1
+
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 18 Apr 2023 11:52:27 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-allow-origin: "*"
+    Cache-Control: no-cache, must-revalidate
+    openai-model: text-davinci-003
+    openai-organization: user-lryarsvrbjl30zf7hotgyuce
+    openai-processing-ms: "2082"
+    openai-version: 2020-10-01
+    strict-transport-security: max-age=15724800; includeSubDomains
+    x-ratelimit-limit-requests: "3000"
+    x-ratelimit-limit-tokens: "250000"
+    x-ratelimit-remaining-requests: "2999"
+    x-ratelimit-remaining-tokens: "249929"
+    x-ratelimit-reset-requests: 20ms
+    x-ratelimit-reset-tokens: 16ms
+    x-request-id: 6aaffe41ee9e17079addbebac245cab0
+    CF-Cache-Status: DYNAMIC
+    Server: cloudflare
+    CF-RAY: 7b9cb3961b4daca1-TXL
+    Content-Encoding: gzip
+    alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+          "id": "cmpl-76eAjNsslP4eGrgHXtawkjQhM55ZS",
+          "object": "text_completion",
+          "created": 1681818745,
+          "model": "text-davinci-003",
+          "choices": [
+              {
+                  "text": "\n\nVolkswagen's most recognizable product is the Volkswagen Beetle, an iconic car that has been in production since 1938. Volkswagen also produces a wide range of other vehicles, including the Golf, Jetta, Passat, Tiguan, and Touareg, as well as commercial vehicles, such as the Transporter, Caddy, and Cra",
+                  "index": 0,
+                  "logprobs": null,
+                  "finish_reason": "length"
+              }
+          ],
+          "usage": {
+              "prompt_tokens": 14,
+              "completion_tokens": 70,
+              "total_tokens": 84
+          }
+      }
+order: 1000

@@ -1,0 +1,63 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/audio/transcriptions"
+  method: POST
+  headers:
+    Accept: application/json
+  body:
+    type: formdata
+    content:
+      - type: file
+        key: file
+        src: sg656JXMR/sample.mp3
+        description: |
+          (Required) The audio file to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm.
+      - type: text
+        key: model
+        value: whisper-1
+        description: |
+          (Required) ID of the model to use. Only `whisper-1` is currently available.
+      - type: text
+        key: prompt
+        value: let me tell you some context about this audio
+        description: |
+          An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should match the audio language.
+        disabled: true
+      - type: text
+        key: response_format
+        value: json
+        description: |
+          The format of the transcript output, in one of these options: json, text, srt, verbose_json, or vtt.
+      - type: text
+        key: temperature
+        value: "0"
+        description: |
+          The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+      - type: text
+        key: language
+        value: en
+        description: |
+          The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Thu, 23 Mar 2023 00:47:26 GMT
+    Content-Type: application/json
+    Content-Length: "42"
+    Connection: keep-alive
+    Openai-Organization: user-aaaaaa
+    Openai-Processing-Ms: "667"
+    Openai-Version: 2020-10-01
+    Strict-Transport-Security: max-age=15724800; includeSubDomains
+    X-Ratelimit-Limit-Requests: "3000"
+    X-Ratelimit-Remaining-Requests: "2999"
+    X-Ratelimit-Reset-Requests: 20ms
+    X-Request-Id: cc7d262d00ae96637f357eb1a474b6a8
+  body:
+    type: json
+    content: |-
+      {
+          "text": "Four score and seven years ago."
+      }
+order: 1000

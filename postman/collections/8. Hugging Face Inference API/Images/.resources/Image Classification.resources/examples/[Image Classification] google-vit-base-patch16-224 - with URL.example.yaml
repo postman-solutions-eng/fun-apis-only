@@ -1,0 +1,56 @@
+$kind: http-example
+name: "[Image Classification] google/vit-base-patch16-224 - with URL"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: google/vit-base-patch16-224
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://eco-cha.com/cdn/shop/products/Clay_Teapot_Lifestyle_01_-_1080px_1080x1080.jpg?v=1577463470"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Wed, 16 Aug 2023 14:35:56 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-expose-headers: x-compute-type, x-compute-time
+    access-control-allow-credentials: "true"
+    x-sha: 2ddc9d4e473d7ba52128f0df4723e478fa14fb80
+    x-compute-type: cpu
+    server: uvicorn
+    x-request-id: 3uMRT3jtczJ8pKxPsbAoY
+    x-compute-characters: "-1"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "0.818"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "score": 0.9330077171325684,
+              "label": "teapot"
+          },
+          {
+              "score": 0.022744733840227127,
+              "label": "water jug"
+          },
+          {
+              "score": 0.008659271523356438,
+              "label": "cup"
+          },
+          {
+              "score": 0.008256449364125729,
+              "label": "coffeepot"
+          },
+          {
+              "score": 0.0017629889771342278,
+              "label": "pitcher, ewer"
+          }
+      ]
+order: 3000

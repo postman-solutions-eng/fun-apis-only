@@ -1,0 +1,46 @@
+$kind: http-request
+description: |-
+  The [Postman Echo API service](https://www.postman.com/postman/workspace/published-postman-templates/collection/631643-f695cab7-6878-eb55-7943-ad88e1ccfd65?action=share&source=copy-link&creator=24483733) can be used to return the JSON structure created by Postbot in the previous request - check out the body tab content to learn how this works.
+
+  <img src="https://content.pstmn.io/61586f94-3dc4-4ed1-b531-53ce2017a329/aW1hZ2UucG5n" alt="octodexJson%20is%20the%20collection%20variable%20set%20by%20Postbot%20in%20the%20previous%20request" width="574" height="259">
+
+  Now, that we have the octocats in proper format, we like to ask Postbot again to visualize the results, but this time, there will be no additional help on how to parse the returned data structures.
+
+  <img src="https://content.pstmn.io/bba90c58-156e-4e9c-ab99-a95a2822373b/aW1hZ2UucG5n" alt="Click%20on%20Visualize%20->%20Visualize%20response" width="961" height="549">
+
+  You should see a table similar to the one in the screenshot that is rendered based on the test code that Postbot generated.
+
+  <img src="https://content.pstmn.io/069790f7-84f9-4f92-a4c8-cabbb9c958ad/aW1hZ2UucG5n" alt="Did%20we%20say%20%20no%20additional%20help%20needed,%20well%20;-)" width="1211" height="541">
+
+  Postbot seemed to have temporarily forgotten Mona, we need to tell it again that the Octocat column is actually a picture of its Octocat friends, so let's prompt it to improve the visualization.
+
+  <img src="https://content.pstmn.io/df8fd8f1-bc02-40db-8208-7fd6a5931d93/aW1hZ2UucG5n" alt="Prompt:%20octocats%20are%20pictures,%20show%20them%20like%20this%20but%20not%20larger%20than%20100x100">
+
+  It's time to finally create some API tests - first, we like make sure we get 100 octocats in less than a second.
+
+  <img src="https://content.pstmn.io/13586d75-d018-4c00-9ba6-441377a217d0/aW1hZ2UucG5n" alt="Prompt:%20Write%20a%20test%20that%20ensures%20we%20get%20at%20least%20100%20octocats%20back%20in%20less%20than%20a%20second">
+
+  We like to ensure that every Octocat illustration has at least one author, let's ask Postbot exactly that.
+
+  <img src="https://content.pstmn.io/106872d8-f940-4049-9135-227ac90531c5/aW1hZ2UucG5n" alt="Prompt:%20Create%20a%20test%20that%20each%20octocat%20has%20at%20least%20one%20author,%20show%20the%20name%20of%20the%20octocat%20if%20the%20test%20fails" width="1933" height="846">
+
+  As it turns out, the Original octocat did not have an author with a GitHub profile, we need to tell Postbot about Simon Oxley - who did not only invent the original Octocat but also the Twitter and Digital Ocean mascot to exclude him from the test to make it pass.
+
+  <img src="https://content.pstmn.io/2c0f809e-08e4-44ea-bebf-861bda2df063/aW1hZ2UucG5n" alt="Prompt:%20Exclude%20the%20octocat%20titled%20Original%20from%20the%20tests">
+
+  Now, that all tests are passing again, we like to know who created most Octocat illustrations and if there are some designers who only created a few - this request already requires some counting logic - will Postbot manage?
+
+  <img src="https://content.pstmn.io/b3ef3ed1-70ee-415d-b77a-f9f7179f993f/aW1hZ2UucG5n" alt="Prompt:%20%20Write%20a%20test%20that%20checks%20that%20each%20author%20has%20at%20least%20created%20one%20octocat,%20display%20the%20names%20of%20the%20authors%20with%20the%20fewest%20and%20the%20most%20octocats%20on%20the%20console" width="2505" height="1338">
+
+  There are 8 designers who created one illustration and Cameron created the most. To show that Postman can also create tests with algorithmitically challenging logic, we will ask it to master one last challenge, namely to show the designers that collaborated the most when designing Octocats.
+
+  <img src="https://content.pstmn.io/dd4d6c9c-7989-4d77-9102-7dd6df2d445e/aW1hZ2UucG5n" alt="Prompt:%20Write%20a%20test%20to%20find%20out%20which%20authors%20paired%20up%20most%20in%20their%20work,%20display%20the%20names%20of%20the%20pairs%20that%20collaborated%20the%20most" width="1944" height="1325">
+
+  Now that you know that John and Tony collaborated the most, it's time to collaborate with your team again and buildyour own backend for the Octodex REST API - as API design is a team sport 😻🤖😊.
+url: https://postman-echo.com/post
+method: POST
+body:
+  type: json
+  content: "{{octodexJson}}"
+examples: ./.resources/Octodex Postbot JSON.resources/examples
+order: 3000

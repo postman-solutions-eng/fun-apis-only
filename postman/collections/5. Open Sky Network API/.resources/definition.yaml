@@ -1,0 +1,21 @@
+$kind: collection
+description: |-
+  Find public flight info for given aircraft ICAO24 code.
+
+  [Find an aircraft's ICAO24 code](https://opensky-network.org/aircraft-database)
+
+  ## Official docs
+
+  [https://openskynetwork.github.io/opensky-api/rest.html](https://openskynetwork.github.io/opensky-api/rest.html)
+
+  ## Rate Limits
+
+  100 API request per day as anonymous user
+
+  ## Visualize
+
+  Click the "Visulize" tab in the response of "flights by aircraft" to see a human-friendly flight record
+
+  <img src="https://content.pstmn.io/e479f7a0-76ef-4674-bfca-475f8db43a84/aW1hZ2UucG5n" alt="" height="858" width="1114">
+variables:
+  baseUrl: https://opensky-network.org/api

@@ -1,0 +1,56 @@
+$kind: http-example
+name: "[Image Classification] skyau/dog-breed-classifier-vit - with URL"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: skyau/dog-breed-classifier-vit
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Wed, 16 Aug 2023 16:28:30 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-expose-headers: x-compute-type, x-compute-time
+    access-control-allow-credentials: "true"
+    x-sha: 712cceb4f75c480e1044c5512f757400becc9ae6
+    x-compute-type: cpu
+    server: uvicorn
+    x-request-id: 0HatVtibLKw1tT-km2KZX
+    x-compute-characters: "-1"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "0.290"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "score": 0.9762476682662964,
+              "label": "German_shepherd"
+          },
+          {
+              "score": 0.001657351152971387,
+              "label": "malinois"
+          },
+          {
+              "score": 0.0006879783468320966,
+              "label": "collie"
+          },
+          {
+              "score": 0.0006663590902462602,
+              "label": "kelpie"
+          },
+          {
+              "score": 0.0006612255237996578,
+              "label": "Eskimo_dog"
+          }
+      ]
+order: 6000

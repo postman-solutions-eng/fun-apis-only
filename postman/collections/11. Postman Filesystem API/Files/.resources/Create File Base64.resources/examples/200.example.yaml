@@ -1,0 +1,42 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/files/file-base64.txt"
+  method: POST
+  headers:
+    Authorization: Bearer {{token}}
+  body:
+    type: json
+    content: |-
+      {
+          "fileData": "data:application/octet-stream;base64,SGVsbG8sIFdvcmxkIQ=="
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Security-Policy: "default-src 'self';style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;script-src 'self';img-src 'self' data: https:;connect-src 'self';font-src 'self' https://cdn.jsdelivr.net;object-src 'none';media-src 'self';frame-src 'none';base-uri 'self';form-action 'self';frame-ancestors 'self';script-src-attr 'none';upgrade-insecure-requests"
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Resource-Policy: same-origin
+    Origin-Agent-Cluster: ?1
+    Referrer-Policy: no-referrer
+    Strict-Transport-Security: max-age=15552000; includeSubDomains
+    X-Content-Type-Options: nosniff
+    X-DNS-Prefetch-Control: off
+    X-Download-Options: noopen
+    X-Frame-Options: SAMEORIGIN
+    X-Permitted-Cross-Domain-Policies: none
+    X-XSS-Protection: "0"
+    Access-Control-Allow-Origin: "*"
+    Content-Type: application/json; charset=utf-8
+    Content-Length: "39"
+    ETag: W/"27-exfREJuNjXuh0J/J2UNcbW1LVig"
+    Date: Thu, 20 Feb 2025 21:09:31 GMT
+    Connection: keep-alive
+    Keep-Alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+          "message": "File created successfully"
+      }
+order: 1000

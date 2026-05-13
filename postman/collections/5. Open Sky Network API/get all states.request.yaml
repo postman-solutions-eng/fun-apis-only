@@ -1,0 +1,5 @@
+$kind: http-request
+url: "{{baseUrl}}/states/all"
+method: GET
+examples: ./.resources/get all states.resources/examples
+order: 1000

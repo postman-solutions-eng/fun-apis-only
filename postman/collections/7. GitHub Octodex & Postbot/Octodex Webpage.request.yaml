@@ -1,0 +1,113 @@
+$kind: http-request
+description: |-
+  ... unfortunately, there is no nice REST API for the [Octodex ](https://octodex.github.com) \- GitHub's home of Octocat illustrations and the place where superfans can find and share their favorite designs.
+
+  <img src="https://content.pstmn.io/63ec8c3b-d13a-486a-9b6e-37ad7d0e0c0f/aW1hZ2UucG5n" alt="...%20a%20great%20html%20page%20but%20how%20to%20access%20the%20octocats%20programatically?" width="1067" height="1230">
+
+  <img src="https://content.pstmn.io/5eb3c028-dfa9-4c6a-a1e9-8a45eff6e38c/aW1hZ2UucG5n" alt="Let's%20call%20Postbot%20to%20the%20rescue" width="187" height="238">
+
+  First, we have called [https://octodex.github.com](https://octodex.github.com) and asked Postbot to parse the html response and visualize the results using the following prompts:
+
+  > Visualize the response by displaying the pictures in the a.d-block img data-src elements and prepend [https://octodex.github.com](https://octodex.github.com/) 
+    
+  > Improve the visualization by adding a title to the top of the images - the title can be found in the a.d-block img.alt element 
+    
+
+  We also like to include the authors of the various octocat designs. As most of them are displayed using their GitHub profile page, we ask Postbot to extract their name from the profile.
+
+  > Display the authors of the octocats below the title, authors always start with prefix [https://github.com/](https://github.com/), that prefix should be removed, entries without that prefix should get ignored 
+    
+
+  Finally, we like to save the parsed results in a Json structure, that is much easier to understand by other programs and can be used to write easy API tests.
+
+  > Store the authors, title, absolute url of all pictures into a json structure and save the stringified version of that structure as a collection variable named octodexJson for the next request, the json field containing the url should be called octocat 
+    
+
+  You do not need to repeat those prompts as we already included the generated test code for you - just send the request and have a look at the visualization tab.
+
+  <img src="https://content.pstmn.io/898a40b7-a814-44fb-bae1-b66b0a113265/aW1hZ2UucG5n" alt="Now,%20let's%20make%20use%20of%20the%20generated%20JSON%20response" width="1529" height="984">
+url: "{{octodexUrl}}"
+method: GET
+headers:
+  x-mock-response-name: Some octocats
+scripts:
+  - type: afterResponse
+    code: |-
+      // Prompts used:
+
+      // 1. Visualize the response by displaying the pictures in the a.d-block img data-src elements and prepend https://octodex.github.com
+      // 2. Improve the visualization by adding a title to the images - the title can be found in the a.d-block img.alt element
+      // 3. Display the title on top of the pictures
+      // 4. Display the authors of the octocats below the title, authors always start with prefix https://github.com/, that prefix should be removed, entries without that prefix should get ignored
+
+      // 5. Store the authors, title, absolute url of all pictures into a json structure and save the stringified version of that structure as a collection variable named octodexJson for the next request, the json field containing the url should be called octocat
+
+      var template = `
+      <div style="display: flex; flex-wrap: wrap;">
+          {{#each response}}
+              <div style="text-align: center; margin: 10px;">
+                  <p>{{attribs.alt}}</p>
+                  <img src="https://octodex.github.com/{{attribs.data-src}}" style="width: 200px; height: 200px; margin: 10px;" alt="{{attribs.alt}}" title="{{attribs.alt}}">
+                  <p>{{authors}}</p>
+              </div>
+          {{/each}}
+      </div>
+      `;
+
+      function constructVisualizerPayload() {
+          var cheerio = require('cheerio');
+          var $ = cheerio.load(pm.response.text());
+
+          var octocats = $("a.d-block img").toArray();
+
+          var visualizerData = octocats.map(function(octocat) {
+              var alt = $(octocat).attr("alt");
+              var dataSrc = $(octocat).attr("data-src");
+              var authors = $(octocat).parent().next().find("a").toArray().map(function(author) {
+                  var href = $(author).attr("href");
+                  if (href.startsWith("https://github.com/")) {
+                      return href.replace("https://github.com/", "");
+                  }
+              }).filter(Boolean);
+
+              return {
+                  attribs: {
+                      alt: alt,
+                      "data-src": dataSrc
+                  },
+                  authors: authors
+              };
+          });
+
+          return { response: visualizerData };
+      }
+
+      pm.visualizer.set(template, constructVisualizerPayload());var cheerio = require('cheerio');var cheerio = require('cheerio');
+      // Extract the authors, title, and absolute URL of all pictures
+      var cheerio = require('cheerio');
+      var $ = cheerio.load(pm.response.text());
+
+      var octocats = $("a.d-block img").toArray();
+
+      var octodexData = octocats.map(function(octocat) {
+          var alt = $(octocat).attr("alt");
+          var dataSrc = $(octocat).attr("data-src");
+          var authors = $(octocat).parent().next().find("a").toArray().map(function(author) {
+              var href = $(author).attr("href");
+              if (href.startsWith("https://github.com/")) {
+                  return href.replace("https://github.com/", "");
+              }
+          }).filter(Boolean);
+
+          return {
+              title: alt,
+              octocat: "https://octodex.github.com" + dataSrc,
+              authors: authors
+          };
+      });
+
+      // Save the JSON structure as a collection variable
+      pm.collectionVariables.set("octodexJson", JSON.stringify(octodexData));
+    language: text/javascript
+examples: ./.resources/Octodex Webpage.resources/examples
+order: 2000

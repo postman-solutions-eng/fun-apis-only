@@ -1,0 +1,42 @@
+$kind: http-request
+url: "{{baseUrl}}/companies"
+method: GET
+auth:
+  type: apikey
+  credentials:
+    value: "{{OpenAIToken}}"
+    key: X-API-KEY
+scripts:
+  - type: afterResponse
+    code: |+
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+      var jsonData = pm.response.json();
+      var company = pm.collectionVariables.get("company");
+
+      console.log("Company: " + company);
+
+      // iterate through the response and filter all the items where company name is fuzzy matched the company variable
+      var filtered = jsonData.filter(function (item) {
+        return item.name.toLowerCase().includes(company.toLowerCase());
+      });
+
+      // test whether the filtered array has exactly one item
+      pm.test("Company exists", function () {
+        pm.expect(filtered.length).to.eql(1);
+      });
+
+      var companyRecord = filtered.pop();
+
+      // test that company record has an associations array with at least one item
+      pm.test("Company has at least one association", function () {
+        pm.expect(companyRecord.associations.length).to.be.above(0);
+        var randomItem = companyRecord.associations[Math.floor(Math.random() * companyRecord.associations.length)];
+        pm.collectionVariables.set("product", randomItem.name);
+      });
+
+
+    language: text/javascript
+order: 7000

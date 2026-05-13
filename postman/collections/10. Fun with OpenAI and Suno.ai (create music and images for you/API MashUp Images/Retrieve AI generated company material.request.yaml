@@ -1,0 +1,44 @@
+$kind: http-request
+description: Creates a completion for the provided prompt and parameters.
+url: "{{openAIUrl}}/completions"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-3.5-turbo-instruct",
+        "prompt": "Complete the following sentence, do not add any other sentences, do not repeat the beginning of the sentence, complete in language {{language}}. If one would need to associate one material with company {{company}} it would be ",
+        "temperature": 0.3,
+        "max_tokens": 10,
+        "frequency_penalty" : -1
+
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+        pm.response.to.have.status(200);
+      });
+
+
+      var response = pm.response.json();
+
+      // test that response has a choice array with at least one item
+      pm.test("At least one choice found", function () {
+        pm.expect(response.choices.length).to.be.above(0);
+        pm.expect(response.choices).to.be.an('array');
+        var randomItem = response.choices[Math.floor(Math.random() * response.choices.length)];
+        console.log(randomItem.text);
+
+        // only take text until the first end of the sentence and remove any new lines and quotes
+        var firstMaterial = randomItem.text.split(".")[0].replace(/(\r\n|\n|\r)/gm, "").replace(/"/g, "").trim();
+
+        // expect first sentence not to be empty
+        pm.expect(firstMaterial).to.not.be.empty;
+
+        // set result as a collection variable
+        pm.collectionVariables.set("material", firstMaterial);
+
+      });
+    language: text/javascript
+order: 5000

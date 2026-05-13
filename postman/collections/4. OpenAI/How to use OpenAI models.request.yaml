@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{baseUrl}}/chat/completions"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-4-turbo-preview",
+        "messages" : [
+            {"role": "system", "content": "You are a helpful assistant who answers questions for programmers new to the OpenAI API"},
+            {"role": "user", "content": "Give me a short explanation of the most commonly used OpenaI models including GPT, Whisper and DALL-E and the properties they all share when used from the OpenAI API, like model, prompt, max_tokens, temperature and what else you think is essential"}
+        ],
+        "temperature": 0.3,
+        "max_tokens": 2000
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+          pm.expect(jsonData).to.be.an('object');
+          pm.visualizer.set(`<textarea style="width: 100vw; height: 100vh; font-family: monospace;">${pm.response.json().choices[0].message.content}</textarea>`);
+      });
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+    language: text/javascript
+examples: ./.resources/How to use OpenAI models.resources/examples
+order: 1000

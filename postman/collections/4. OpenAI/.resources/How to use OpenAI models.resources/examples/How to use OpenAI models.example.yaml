@@ -1,0 +1,49 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/chat/completions"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-4-turbo-preview",
+          "messages" : [
+              {"role": "system", "content": "You are a helpful assistant who answers questions for programmers new to the OpenAI API"},
+              {"role": "user", "content": "Give me a short explanation of the most commonly used OpenaI models including GPT, Whisper and DALL-E and the properties they all share when used from the OpenAI API, like model, prompt, max_tokens, temperature and what else you think is essential"}
+          ],
+          "temperature": 0.3,
+          "max_tokens": 2000
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+    openai-model: gpt-4-0125-preview
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-96xty51Poxramuyst0PFkFbVmBceS",
+          "object": "chat.completion",
+          "created": 1711447258,
+          "model": "gpt-4-0125-preview",
+          "choices": [
+              {
+                  "index": 0,
+                  "message": {
+                      "role": "assistant",
+                      "content": "OpenAI provides a suite of powerful AI models, each designed for specific types of tasks. The most commonly used models include GPT (Generative Pre-trained Transformer), Whisper, and DALL-E. Despite their different applications, when accessed via the OpenAI API, they share several properties that control how you interact with them. Here's a brief overview of each model and the shared properties:\n\n### GPT (Generative Pre-trained Transformer)\n- **Purpose**: Designed for natural language understanding and generation. It can answer questions, write essays, summarize texts, generate creative content, and more.\n- **Use Cases**: Chatbots, content creation, text summarization, etc.\n\n### Whisper\n- **Purpose**: A speech recognition model that can transcribe spoken language into text. It's designed to handle a wide range of audio qualities and accents.\n- **Use Cases**: Transcription services, voice-controlled applications, content accessibility, etc.\n\n### DALL-E\n- **Purpose**: An AI model for generating images from textual descriptions. It can create new, unique images based on the descriptions it's given.\n- **Use Cases**: Art creation, design mockups, visual content generation, etc.\n\n### Shared Properties for API Interaction\nWhen using these models via the OpenAI API, several properties are commonly specified to control the behavior of the model:\n\n- **Model**: Specifies which version of the model you're using (e.g., `gpt-3.5-turbo`, `whisper-large`, `dall-e-2`). Each model might have different versions optimized for various tasks or performance levels.\n\n- **Prompt**: The input you provide to the model. For GPT, it's a text prompt. For Whisper, it's an audio file. For DALL-E, it's a textual description of the image you want to generate.\n\n- **Max Tokens**: The maximum length of the model's response. For text-based models like GPT, this limits the number of words or characters in the response. It's essential for controlling output size and computational cost.\n\n- **Temperature**: Controls the randomness of the model's responses. A higher temperature results in more varied and creative outputs, while a lower temperature makes the model's responses more deterministic and conservative.\n\n- **Top P (Top-k Sampling)**: Another parameter influencing the randomness and creativity of the model's output. It narrows or widens the set of possible next tokens the model considers at each step.\n\n### Additional Considerations\n- **API Key**: Required for authentication and to track usage against your account's limits and billing.\n- **Rate Limits**: Depending on your subscription, you'll have limits on how many requests you can make in a given period.\n- **Cost**: Usage is typically billed based on the number of tokens processed (for text) or compute time (for tasks like image generation and audio processing).\n\nWhen integrating these models into your applications, it's crucial to understand these properties and how they affect the model's performance, output quality, and your costs. Experimenting with different settings can help you find the optimal balance for your specific use case."
+                  },
+                  "logprobs": null,
+                  "finish_reason": "stop"
+              }
+          ],
+          "usage": {
+              "prompt_tokens": 80,
+              "completion_tokens": 629,
+              "total_tokens": 709
+          },
+          "system_fingerprint": "fp_a7daf7c51e"
+      }
+order: 1000

@@ -1,0 +1,31 @@
+$kind: http-request
+description: |-
+  **Image classification** models classify images into one or more categories.
+
+  Available categories vary by model. For example, a model may specialize in estimating the age range of a person based on a picture of their face.
+
+  Image can be a link or base64
+
+  See available [Image Classification models](https://huggingface.co/models?pipeline_tag=image-classification&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [nateraw/vit-age-classifier](https://huggingface.co/nateraw/vit-age-classifier) | Predicts age range based on image of a person's face |
+  | [google/vit-base-patch16-224](https://huggingface.co/google/vit-base-patch16-224) | Identifies main object in image |
+  | [Nahrawy/AIorNot](https://huggingface.co/Nahrawy/AIorNot) | Classifies liklihood of an image being "real" or "ai" generated |
+  | [jayanta/google-vit-base-patch16-224-face](https://huggingface.co/jayanta/google-vit-base-patch16-224-face) | detects emotions from facial expressions in an image (happy, neutral, disgust, sad) |
+  | [skyau/dog-breed-classifier-vit](https://huggingface.co/skyau/dog-breed-classifier-vit) | Classifies dog breed by image |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: nateraw/vit-age-classifier
+body:
+  type: json
+  content: |-
+    {
+      "inputs": "https://media.istockphoto.com/id/805012064/photo/portrait-of-mature-hispanic-man.jpg?s=612x612&w=0&k=20&c=AfNa1ay8LPzaO-NOJZspqULvYavyhXg4rnJ9U_tvJY4="
+    }
+examples: ./.resources/Image Classification.resources/examples
+order: 1000

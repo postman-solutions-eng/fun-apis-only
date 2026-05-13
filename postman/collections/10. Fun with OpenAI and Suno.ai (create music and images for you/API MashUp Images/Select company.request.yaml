@@ -1,0 +1,40 @@
+$kind: http-request
+url: https://postman-echo.com/post?company=Adidas&material=lego
+method: POST
+queryParams:
+  company: Adidas
+  material: lego
+body:
+  type: json
+  content: ""
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+
+      var jsonData = pm.response.json();
+
+      // test whether company field is not blank
+      pm.test("Company field is not blank", function () {
+          pm.expect(jsonData.args.company).to.not.be.empty;
+          // save company to a collection variable
+          pm.collectionVariables.set("company", jsonData.args.company);
+
+          // remove all special characters from company name and only use small letters
+          var companyId = jsonData.args.company.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+
+          // save company id to a collection variable
+          pm.collectionVariables.set("companyId", companyId);
+      })
+
+      // test whether material field is not blank
+      pm.test("Material field is not blank", function () {
+          pm.expect(jsonData.args.material).to.not.be.empty;
+          // save material to a collection variable
+          pm.collectionVariables.set("material", jsonData.args.material);
+      })
+    language: text/javascript
+order: 1000

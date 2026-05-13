@@ -1,0 +1,26 @@
+$kind: http-request
+description: |-
+  **Fill mask** models are trained to predict the missing words in a sentence. The "blank spots" are defined in the input text using a mask token such as `[MASK]`
+
+  Note: Mask tokens vary by model. ex: \[MASK\], etc. Check the docs for each model to learn which mask token to use
+
+  See available [Fill Mask models](https://huggingface.co/models?pipeline_tag=fill-mask&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [bert-base-uncased](https://huggingface.co/bert-base-uncased) | Mask token: \[MASK\] |
+  | [bert-base-multilingual-cased](https://huggingface.co/bert-base-multilingual-cased) | Mask token: \[MASK\] |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: bert-base-uncased
+body:
+  type: json
+  content: |-
+    {
+      "inputs": "Life is full of [MASK], and it's up to us to navigate through them with determination and a positive mindset."
+    }
+examples: ./.resources/Fill mask.resources/examples
+order: 5000

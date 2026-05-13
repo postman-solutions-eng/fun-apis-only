@@ -1,0 +1,36 @@
+$kind: http-request
+description: |-
+  [https://beta.openai.com/docs/api-reference/completions](https://beta.openai.com/docs/api-reference/completions/create)
+
+  Input some text as a prompt, and the model will generate a text completion that attempts to match whatever context or pattern you gave it.
+
+  > Keep in mind that the default models' training data cuts off in 2021, so they may not have knowledge of current events. We plan to add more continuous training in the future.
+
+  See content models here:  
+  [https://beta.openai.com/docs/models/overview](https://beta.openai.com/docs/models/overview)
+url: "{{baseUrl}}/completions"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-3.5-turbo-instruct",
+        "prompt":"A cute name for an icecream shop"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+          pm.expect(jsonData).to.be.an('object');
+          pm.visualizer.set(`<textarea style="width: 100vw; height: 100vh; font-family: monospace;">${pm.response.json().choices[0].message.content}</textarea>`);
+      });
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+    language: text/javascript
+examples: ./.resources/text completion.resources/examples
+order: 2000

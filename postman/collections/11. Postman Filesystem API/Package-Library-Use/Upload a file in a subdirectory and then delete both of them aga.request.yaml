@@ -1,0 +1,70 @@
+$kind: http-request
+name: Upload a file in a subdirectory and then delete both of them again
+url: https://postman-echo.com/post?fileName=my-file.txt&directoryName=my-subdirectory
+method: POST
+queryParams:
+  fileName: my-file.txt
+  directoryName: my-subdirectory
+body:
+  type: formdata
+  content:
+    - type: file
+      key: ""
+      src: /Users/johannesnicolai/Downloads/file2.txt
+scripts:
+  - type: afterResponse
+    code: |-
+      const fsLib = pm.require('@automotive-demo/local-filesystem-api-lib');
+
+      // Get directory and file names from the query parameters
+      const directoryName = pm.response.json().args.directoryName;
+      const fileName = pm.response.json().args.fileName;
+      const fullPath = directoryName ? `${directoryName}/${fileName}` : fileName;
+
+      pm.test("Create and delete files in subdirectory", async () => {
+          try {
+              await fsLib.setupAuth();
+              // Create directory first if specified
+              if (directoryName) {
+                 await fsLib.createDirectory(directoryName);
+              }
+
+              // Get the file data from the response
+              const files = pm.response.json().files;
+              const fileData = Object.values(files)[0];  // Get the first file's data
+              
+              // Upload file to subdirectory
+              await fsLib.uploadFile(fullPath, fileData);
+
+              // Read back the file and verify its contents
+              const uploadedContent = await fsLib.readFile(fullPath);
+              console.log(`Downloaded file size: ${uploadedContent.length} bytes`);
+              pm.test("File was downloaded with non empty size", () => {
+                  pm.expect(uploadedContent.length).to.be.greaterThan(0);
+              });
+              
+              // Try to delete the directory before the file (should fail)
+              try {
+                  await fsLib.deleteDirectory(directoryName);
+                  pm.expect.fail("Should not be able to delete non-empty directory");
+              } catch (error) {
+                  pm.expect(error.message).to.include("Directory is not empty");
+              }
+              
+              // Delete the file first
+              await fsLib.deleteFile(fullPath);
+              
+              // Now delete the empty directory (only if directory was specified)
+              if (directoryName) {
+                  await fsLib.deleteDirectory(directoryName);
+              }
+          } catch (error) {
+              pm.expect.fail(error.message);
+          }
+      });
+    language: text/javascript
+    packages:
+      "@automotive-demo/local-filesystem-api-lib":
+        id: 0195244c-fbb7-7035-8ebd-2a9585bd115e
+examples: ./.resources/Upload a file in a subdirectory and then delete both of them aga.resources/examples
+order: 3000

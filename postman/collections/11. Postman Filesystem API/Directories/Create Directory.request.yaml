@@ -1,0 +1,24 @@
+$kind: http-request
+description: |-
+  ### Add Sub-Folder
+
+  This endpoint allows the user to add a sub-folder within the directories.
+
+  **Request Body**
+
+  - No request body parameters required.
+      
+
+  **Response**
+
+  - Status: 200 OK
+      
+  - Content-Type: application/json
+      
+  - { "message": ""}
+url: "{{baseUrl}}/api/directories/sub-folder"
+method: POST
+headers:
+  Authorization: Bearer {{token}}
+examples: ./.resources/Create Directory.resources/examples
+order: 3000

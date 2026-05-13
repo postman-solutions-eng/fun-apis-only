@@ -1,0 +1,98 @@
+$kind: http-request
+description: |-
+  1. Click **Send** to get coordinates
+
+  1. Click **Visualize** in the response to see the current location of ISS on a map
+url: http://api.open-notify.org/iss-now.json
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      var template = `
+      <script src="https://d3js.org/d3.v4.js"></script>
+      <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+      <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+      <style>
+          h4 {
+              text-align: center;
+          }
+          .container, .map-container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+          }
+          .map-container {
+              border: solid 2px #ededee;
+              border-radius: 4px;
+              padding: 2rem;
+          }
+      </style>
+
+      <div class="container">
+          <h4>Where over the world is ISS?</h4>
+          <div class="map-container">
+            <p>lat: {{latitude}}, long: {{longitude}}</p>
+            <svg id="my_dataviz" width="400" height="300"></svg>
+          </div>
+      </div>
+      <script>
+
+      // The svg
+      const svg = d3.select("svg"),
+          width = +svg.attr("width"),
+          height = +svg.attr("height");
+
+      // Map and projection
+      const projection = d3.geoBromley()
+          .scale(width / 1.6 / Math.PI)
+          .translate([width / 2, height / 2])
+
+      // Load external data and boot
+      d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
+
+          // Draw the map
+          svg.append("g")
+              .selectAll("path")
+              .data(data.features)
+              .enter().append("path")
+                  .attr("fill", "#a8a8ac")
+                  .attr("d", d3.geoPath()
+                      .projection(projection)
+                  )
+                  .style("stroke", "#fff")
+
+          // marker coordinates
+          const markers = [
+              {
+                  long: {{longitude}}, 
+                  lat: {{latitude}}
+              }
+          ]
+
+          // Add markers to map
+          svg
+            .selectAll("myMarkers")
+            .data(markers)
+            .enter()
+            .append("circle")
+              .attr("cx", function(d){ return projection([d.long, d.lat])[0] })
+              .attr("cy", function(d){ return projection([d.long, d.lat])[1] })
+              .attr("r", 5)
+              .style("fill", "#ffac33")
+              .attr("stroke", "#ffac33")
+              .attr("stroke-width", 3)
+              .attr("fill-opacity", .4)
+      })
+      </script>
+      `;
+
+      var response = pm.response.json();
+      const { longitude, latitude } = response.iss_position;
+
+      pm.visualizer.set(template, {
+          longitude, 
+          latitude
+      } );
+    language: text/javascript
+examples: ./.resources/get current ISS location.resources/examples
+order: 1000

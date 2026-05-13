@@ -1,0 +1,45 @@
+$kind: http-example
+request:
+  url: https://whoa.onrender.com/whoas/movies
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 01 Apr 2024 15:37:00 GMT
+    Content-Type: application/json; charset=utf-8
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    CF-Ray: 86d9a872581543ca-EWR
+    CF-Cache-Status: DYNAMIC
+    Access-Control-Allow-Origin: "*"
+    ETag: W/"165-wECUJSd3fmJIpjRobyw4/PjGBYY"
+    Vary: Accept-Encoding
+    rndr-id: c3ac869e-7034-4b0f
+    x-powered-by: Express
+    x-render-origin-server: Render
+    Server: cloudflare
+    Content-Encoding: br
+    alt-svc: h3=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      [
+          "Babes in Toyland (The Director's Cut)",
+          "Babes in Toyland",
+          "The Night Before",
+          "The Prince of Pennsylvania",
+          "Bill & Ted's Excellent Adventure",
+          "I Love You to Death",
+          "Tune in Tomorrow",
+          "Point Break",
+          "Bill & Ted's Bogus Journey",
+          "The Matrix",
+          "Sweet November",
+          "Knock Knock",
+          "The Neon Demon",
+          "Toy Story 4",
+          "Bill & Ted Face the Music",
+          "The Matrix Resurrections"
+      ]
+order: 1000

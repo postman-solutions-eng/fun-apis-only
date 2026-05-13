@@ -1,0 +1,27 @@
+$kind: http-request
+description: |-
+  **Token Classification** models can be used to assign a label to each token in a sentence (ex: naming parts of speech, labeling custom categories, identifying key phrases, etc).
+
+  See available [Token Classification models](https://huggingface.co/models?pipeline_tag=token-classification&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [tomaarsen/span-marker-mbert-base-multinerd](https://huggingface.co/tomaarsen/span-marker-mbert-base-multinerd) | SpanMarker for Multilingual Named Entity Recognition (15 types: person, vehicle, place, etc...) |
+  | [tomaarsen/span-marker-bert-base-ncbi-disease](https://huggingface.co/tomaarsen/span-marker-bert-base-ncbi-disease) | SpanMarker for Disease Named Entity Recognition |
+  | [dslim/bert-base-NER](https://huggingface.co/dslim/bert-base-NER) | Recognize four types of entities: location (LOC), organizations (ORG), person (PER) and Miscellaneous (MISC). |
+  | [ml6team/keyphrase-extraction-kbir-inspec](https://huggingface.co/ml6team/keyphrase-extraction-kbir-inspec) | Keyphrase extraction |
+  | [oliverguhr/fullstop-punctuation-multilang-large](https://huggingface.co/oliverguhr/fullstop-punctuation-multilang-large?text=Ho+sentito+che+ti+sei+laureata+il+che+mi+fa+molto+piacere) | Predicts punctuation in text (en, it, fr, de) |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: tomaarsen/span-marker-mbert-base-multinerd
+body:
+  type: json
+  content: |
+    {
+      "inputs": "Amelia Earhart flew her single-engine Lockheed Vega 5B across the Atlantic to Paris."
+    }
+examples: ./.resources/Token Classification.resources/examples
+order: 3000

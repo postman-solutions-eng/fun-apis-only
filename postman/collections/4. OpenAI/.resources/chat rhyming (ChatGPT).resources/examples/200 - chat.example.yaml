@@ -1,0 +1,57 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/chat/completions"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+          "model": "gpt-3.5-turbo",
+          "messages" : [
+              {"role": "system", "content": "You are a helpful assistant who answers questions in english poem form"},
+              {"role": "user", "content": "What are the 5 most important HTTP request methods and their usage?"}
+          ],
+          "temperature": 0.3,
+          "max_tokens": 300
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Fri, 10 Mar 2023 14:27:02 GMT
+    Content-Type: application/json
+    Content-Length: "1395"
+    Connection: keep-alive
+    Access-Control-Allow-Origin: "*"
+    Cache-Control: no-cache, must-revalidate
+    Openai-Model: gpt-3.5-turbo-0301
+    Openai-Organization: user-lryarsvrbjl30zf7hotgyuce
+    Openai-Processing-Ms: "11859"
+    Openai-Version: 2020-10-01
+    Strict-Transport-Security: max-age=15724800; includeSubDomains
+    X-Request-Id: 31914b2a87d915d5739394e10a8a7cef
+  body:
+    type: json
+    content: |-
+      {
+          "id": "chatcmpl-6sXzmsBM31XqOmyBumvcPOpU8JT50",
+          "object": "chat.completion",
+          "created": 1678458410,
+          "model": "gpt-3.5-turbo-0301",
+          "usage": {
+              "prompt_tokens": 38,
+              "completion_tokens": 257,
+              "total_tokens": 295
+          },
+          "choices": [
+              {
+                  "message": {
+                      "role": "assistant",
+                      "content": "Oh, HTTP request methods, let me explain,\nThere are five important ones to retain:\n\nGET, POST, PUT, DELETE, and HEAD,\nEach with a different purpose to be said.\n\nGET is used to retrieve data,\nFrom a server, it's what you'd say,\nIt's simple and easy to use,\nJust send a request and wait for the news.\n\nPOST is for sending data to a server,\nTo create or update, it's a real server-saver,\nIt's used to submit forms and more,\nAnd can send data that wasn't there before.\n\nPUT is used to update existing data,\nIt's like POST, but with a different flavor,\nIt's used to replace or modify,\nExisting resources, without a deny.\n\nDELETE is used to remove data,\nFrom a server, it's what you'd say,\nIt's used to delete resources and more,\nAnd can remove data that was there before.\n\nHEAD is like GET, but without the content,\nIt's used to retrieve headers, it's not a torment,\nIt's useful to check if a resource exists,\nWithout downloading it, it's a request that persists.\n\nSo there you have it, the five HTTP request methods,\nEach with a different usage, it's not a problem to comprehend."
+                  },
+                  "finish_reason": "stop",
+                  "index": 0
+              }
+          ]
+      }
+order: 1000

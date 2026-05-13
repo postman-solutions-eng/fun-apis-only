@@ -1,0 +1,25 @@
+$kind: http-request
+description: |-
+  **Audio Classification** models classify audio into one or more categories.
+
+  Audio files can be sent as a binary data type.
+
+  See available Audio [Classification models](https://huggingface.co/models?pipeline_tag=audio-classification&sort=downloads)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [facebook/fastspeech2-en-ljspeech](https://huggingface.co/facebook/fastspeech2-en-ljspeech) | English, female voice |
+  | [espnet/kan-bayashi_jsut_conformer_fastspeech2](https://huggingface.co/espnet/kan-bayashi_jsut_conformer_fastspeech2?text=これはテストです) | Japanese, female voice |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: facebook/fastspeech2-en-ljspeech
+body:
+  type: json
+  content: |-
+    {
+        "inputs": "Hello, this is a test"
+    }
+order: 2000

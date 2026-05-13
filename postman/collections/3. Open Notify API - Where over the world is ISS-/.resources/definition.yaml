@@ -1,0 +1,12 @@
+$kind: collection
+name: 3. Open Notify API - Where over the world is ISS?
+description: |-
+  ## Locate the ISS!
+
+  This collection uses the [Open Notify API](http://open-notify.org/Open-Notify-API/ISS-Location-Now/) to get the current coordinates of the ISS.
+
+  Clicking the "Visualize" tab in the response shows the current location of the ISS on a world map using [d3.js](https://d3js.org/).
+
+  <img src="https://user-images.githubusercontent.com/9841162/118319860-34528880-b4b0-11eb-8d2e-6ef0a24f1f4e.png" alt="image">
+variables:
+  baseUrl: http://api.open-notify.org/iss-now.json

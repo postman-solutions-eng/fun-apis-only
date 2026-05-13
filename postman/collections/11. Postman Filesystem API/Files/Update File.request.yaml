@@ -1,0 +1,36 @@
+$kind: http-request
+description: |-
+  This endpoint allows you to update the content of a specific file by sending an HTTP PUT request to {{baseUrl}}/api/files/file.txt.
+
+  ### Request Body
+
+  The request should include a raw JSON body with the following parameter:
+
+  - `content`: The updated content of the file.
+      
+
+  ### Response
+
+  Upon a successful execution, the endpoint returns a 200 status with a JSON response containing a `message` key. The value of the `message` key will provide information about the success of the update operation.
+
+  #### Example Response
+
+  ``` json
+  {
+      "message": ""
+  }
+
+   ```
+url: "{{baseUrl}}/api/files/file.txt"
+method: PUT
+headers:
+  Authorization: Bearer {{token}}
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+        "content": "Updated file content"
+    }
+examples: ./.resources/Update File.resources/examples
+order: 5000

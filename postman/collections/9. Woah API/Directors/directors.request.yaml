@@ -1,0 +1,5 @@
+$kind: http-request
+url: https://whoa.onrender.com/whoas/directors
+method: GET
+examples: ./.resources/directors.resources/examples
+order: 1000

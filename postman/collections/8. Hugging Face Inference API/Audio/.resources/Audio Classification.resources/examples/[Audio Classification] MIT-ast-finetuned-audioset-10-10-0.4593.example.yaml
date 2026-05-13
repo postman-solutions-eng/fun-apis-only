@@ -1,0 +1,51 @@
+$kind: http-example
+name: "[Audio Classification] MIT/ast-finetuned-audioset-10-10-0.4593"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: MIT/ast-finetuned-audioset-10-10-0.4593
+  body:
+    type: file
+    content:
+      src: A3gXUTMUV/voice.mp3
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 05 Sep 2023 08:40:32 GMT
+    Content-Type: application/json
+    Content-Length: "288"
+    Connection: keep-alive
+    x-compute-time: "1.052"
+    x-request-id: BcdvVMyV66nmduswr4nsP
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-sha: c1c0c663ecf7a4de90db1bc2f8d4e2d38a4f93b4
+    access-control-allow-credentials: "true"
+    x-compute-type: cache
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "score": 0.8405092358589172,
+              "label": "Speech"
+          },
+          {
+              "score": 0.03923916816711426,
+              "label": "Speech synthesizer"
+          },
+          {
+              "score": 0.01863255724310875,
+              "label": "Narration, monologue"
+          },
+          {
+              "score": 0.012010861188173294,
+              "label": "Conversation"
+          },
+          {
+              "score": 0.011494217440485954,
+              "label": "Male speech, man speaking"
+          }
+      ]
+order: 1000

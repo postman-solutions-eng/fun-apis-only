@@ -1,0 +1,42 @@
+$kind: http-example
+name: Trigger External Monitor
+request:
+  url: https://newman-api.getpostman.com/run/24483733/3d64b349-6308-4217-86e9-458e52a4d442
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+          "GITHUB_USERNAME": "{{GITHUB_USERNAME}}",
+          "baseUrl": "{{baseUrl}}",
+          "owner": "{{owner}}",
+          "repo": "{{repo}}",
+          "issue_number": "{{issue_number}}",
+          "GITHUB_API_TOKEN": "{{GITHUB_API_TOKEN}}",
+          "company": "{{company}}",
+          "material": "{{material}}",
+          "mode": "{{mode}}",
+          "OpenAIToken": "{{OpenAIToken}}",
+          "baseURL": "{{baseUrl}}",
+          "githubUrl": "{{githubUrl}}"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Fri, 06 Jan 2023 17:30:39 GMT
+    Content-Type: text/html; charset=utf-8
+    Content-Length: "2"
+    Connection: keep-alive
+    Server: nginx
+    x-frame-options: DENY
+    x-srv-trace: v=1;t=df13ddd2ab5cb8f5
+    x-srv-span: v=1;s=c19bda24c2899d85
+    Cache-Control: no-cache, no-store, must-revalidate
+    Pragma: no-cache
+    Expires: "0"
+    Vary: Accept-Encoding
+  body:
+    type: html
+    content: ok
+order: 2000

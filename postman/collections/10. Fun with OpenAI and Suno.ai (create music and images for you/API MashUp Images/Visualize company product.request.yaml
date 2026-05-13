@@ -1,0 +1,57 @@
+$kind: http-request
+description: |-
+  [https://beta.openai.com/docs/api-reference/completions](https://beta.openai.com/docs/api-reference/completions/create)
+
+  Input some text as a prompt, and the model will generate a text completion that attempts to match whatever context or pattern you gave it.
+
+  > Keep in mind that the default models' training data cuts off in 2021, so they may not have knowledge of current events. We plan to add more continuous training in the future.
+
+  See content models here:  
+  [https://beta.openai.com/docs/models/overview](https://beta.openai.com/docs/models/overview)
+
+  ### Viewing images
+
+  Open the **Visualizer** tab in the response to view your artistic creation.
+
+  <img src="https://content.pstmn.io/9f41f11a-b21e-4207-b709-7b0169d26466/aW1hZ2UucG5n" alt="" height="1178" width="1650">
+url: "{{openAIUrl}}/images/generations"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "prompt":"{{product}} made of {{material}}",
+        "n": 3,
+        "size": "512x512",
+        "response_format": "url"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      const body = pm.response.json()
+
+      const urls = body.data.map(i => i.url)
+
+      const template = `
+      <style>
+      div {
+          display: flex;
+          gap: 1rem;
+      }
+      </style>
+
+      <div>
+        {{#each urls}} 
+          <img src="{{this}}">
+        {{/each}}
+      </div>
+      `
+      pm.visualizer.set(template, { urls })
+
+      pm.collectionVariables.set("url", body.data[0].url);
+    language: text/javascript
+order: 8000

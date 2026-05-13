@@ -1,0 +1,44 @@
+$kind: http-example
+request:
+  url: https://whoa.onrender.com/whoas/directors
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 01 Apr 2024 15:37:37 GMT
+    Content-Type: application/json; charset=utf-8
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    CF-Ray: 86d9a956ca2143ca-EWR
+    CF-Cache-Status: DYNAMIC
+    Access-Control-Allow-Origin: "*"
+    ETag: W/"102-ovLXLpf8QNSQCXuzcW9UUaEoIS8"
+    Vary: Accept-Encoding
+    rndr-id: 45068707-199f-4d3b
+    x-powered-by: Express
+    x-render-origin-server: Render
+    Server: cloudflare
+    Content-Encoding: br
+    alt-svc: h3=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      [
+          "Clive Donner",
+          "Thom Eberhardt",
+          "Ron Nyswaner",
+          "Stephen Herek",
+          "Lawrence Kasdan",
+          "Jon Amiel",
+          "Kathryn Bigelow",
+          "Pete Hewitt",
+          "Lana Wachowski and Lilly Wachowski",
+          "Pat O'Connor",
+          "Eli Roth",
+          "Nicolas Winding Refn",
+          "Josh Cooley",
+          "Dean Parisot",
+          "Lana Wachowski"
+      ]
+order: 1000

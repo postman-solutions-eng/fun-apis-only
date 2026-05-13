@@ -1,0 +1,50 @@
+$kind: http-example
+name: "[Zero Shot Classification] MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli
+  body:
+    type: json
+    content: |
+      {
+        "inputs": "Hi, I recently bought a device from your company but it is not working as advertised and I would like to get reimbursed!",
+        "parameters": {
+          "candidate_labels": ["refund", "legal", "faq"]
+        }
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:16:36 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-type: cpu
+    x-sha: eb8b17b1983bca679126ea69b12b5d28c5fe9b9a
+    access-control-allow-credentials: "true"
+    server: uvicorn
+    x-compute-time: "1.865"
+    x-compute-characters: "120"
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-request-id: XUZqgLGvop26jYgNLMbz2
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+  body:
+    type: json
+    content: |-
+      {
+          "sequence": "Hi, I recently bought a device from your company but it is not working as advertised and I would like to get reimbursed!",
+          "labels": [
+              "refund",
+              "legal",
+              "faq"
+          ],
+          "scores": [
+              0.9356260895729065,
+              0.03456110879778862,
+              0.029812779277563095
+          ]
+      }
+order: 1000

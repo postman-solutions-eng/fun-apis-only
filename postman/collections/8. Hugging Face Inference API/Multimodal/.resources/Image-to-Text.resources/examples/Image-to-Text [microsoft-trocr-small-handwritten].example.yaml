@@ -1,0 +1,39 @@
+$kind: http-example
+name: Image-to-Text [microsoft/trocr-small-handwritten]
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: microsoft/trocr-small-handwritten
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://github-production-user-asset-6210df.s3.amazonaws.com/9841162/273646776-2abeef4f-44aa-48b7-a666-4fec5204d607.png"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Mon, 09 Oct 2023 16:38:12 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-sha: 55eb2010aeaaa246defc329d42939e0253d55c99
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-request-id: tow0Wnz-evixelk5VG19V
+    server: uvicorn
+    x-compute-characters: "-1"
+    x-compute-type: cpu
+    access-control-allow-credentials: "true"
+    x-compute-time: "0.575"
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "generated_text": "industry, \" Mr. Brown commented icily. \" Let us have a"
+          }
+      ]
+order: 4000

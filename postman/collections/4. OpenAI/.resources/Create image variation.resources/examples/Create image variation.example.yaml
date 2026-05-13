@@ -1,0 +1,57 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/images/variations"
+  method: POST
+  body:
+    type: formdata
+    content:
+      - type: file
+        key: image
+        src: v3VHX8Xi0/gerenuk.png
+        description: The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask.
+      - type: text
+        key: n
+        value: "2"
+        description: The number of images to generate. Must be between 1 and 10.
+      - type: text
+        key: size
+        value: 1024x1024
+        description: The size of the generated images. Must be one of 256x256, 512x512, or 1024x1024.
+      - type: text
+        key: response_format
+        value: url
+        description: The format in which the generated images are returned. Must be one of url or b64_json.
+      - type: text
+        key: user
+        value: ""
+        description: A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
+        disabled: true
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Thu, 23 Mar 2023 01:33:25 GMT
+    Content-Type: application/json
+    Content-Length: "1046"
+    Connection: keep-alive
+    OpenAI-Version: 2020-10-01
+    OpenAI-Organization: user-aaaaaa
+    X-Request-ID: 04a34b0eb57280dac25a01892d496f77
+    OpenAI-Processing-Ms: "10306"
+    Access-Control-Allow-Origin: "*"
+    Strict-Transport-Security: max-age=15724800; includeSubDomains
+  body:
+    type: json
+    content: |-
+      {
+          "created": 1679535205,
+          "data": [
+              {
+                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-6dmqkbEsO2sA55h8sMAzZdMz/user-YDfxhOf885yCVb52Zjw5ly51/img-OYsJcqj0rVYfVhYluejJrfEn.png?st=2023-03-23T00%3A33%3A25Z&se=2023-03-23T02%3A33%3A25Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-23T00%3A22%3A49Z&ske=2023-03-24T00%3A22%3A49Z&sks=b&skv=2021-08-06&sig=JgNgllteb13k0cB2WFiEatRSjm2qc8eVb/pb2qCRGN8%3D"
+              },
+              {
+                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-6dmqkbEsO2sA55h8sMAzZdMz/user-YDfxhOf885yCVb52Zjw5ly51/img-FtOQhQDItN31ebG2KDTqffLt.png?st=2023-03-23T00%3A33%3A25Z&se=2023-03-23T02%3A33%3A25Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-23T00%3A22%3A49Z&ske=2023-03-24T00%3A22%3A49Z&sks=b&skv=2021-08-06&sig=jQpXE60He7szcda3fBtUYndgcEYB84eH1f5nvq9Rqk8%3D"
+              }
+          ]
+      }
+order: 1000

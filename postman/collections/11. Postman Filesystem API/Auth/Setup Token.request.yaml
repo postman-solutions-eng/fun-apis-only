@@ -1,0 +1,58 @@
+$kind: http-request
+description: |-
+  #### HTTP POST /api/auth/setup
+
+  This endpoint is used to set up authentication.
+
+  ##### Request Body
+
+  - `token` (string): The token used for authentication setup.
+      
+
+  ##### Example Request Body
+
+  ``` json
+  {
+      "token": "{{token}}"
+  }
+
+   ```
+
+  ##### Response
+
+  The response for this request is in JSON format with a schema as follows:
+
+  ``` json
+  {
+      "type": "object",
+      "properties": {
+          "message": {
+              "type": "string"
+          }
+      }
+  }
+
+   ```
+
+  The response contains a `message` field, which provides information about the status of the authentication setup.
+
+  ##### Example Response
+
+  ``` json
+  {
+      "message": "Token set successfully"
+  }
+
+   ```
+url: "{{baseUrl}}/api/auth/setup"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+        "token": "{{token}}"
+    }
+examples: ./.resources/Setup Token.resources/examples
+order: 1000

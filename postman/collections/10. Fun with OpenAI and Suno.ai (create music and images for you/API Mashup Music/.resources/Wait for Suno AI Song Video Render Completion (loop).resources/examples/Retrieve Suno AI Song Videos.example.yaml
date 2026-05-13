@@ -1,0 +1,72 @@
+$kind: http-example
+request:
+  url: https://suno-api-vercel-nine.vercel.app/api/get?ids={{songIds}}
+  method: GET
+  queryParams:
+    ids: "{{songIds}}"
+  body:
+    type: json
+    content: |-
+      {
+        "prompt": "[Verse 1]{{musicText}}",
+        "tags": "{{musicStyle}}",
+        "title": "{{company}} Postman Song",
+        "make_instrumental": false,
+        "wait_audio": true
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Access-Control-Allow-Headers: Content-Type, Authorization
+    Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+    Access-Control-Allow-Origin: "*"
+    Cache-Control: public, max-age=0, must-revalidate
+    Connection: keep-alive
+    Content-Encoding: br
+    Content-Type: application/json
+    Date: Sat, 25 May 2024 22:50:41 GMT
+    Server: Vercel
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+    X-Matched-Path: /api/get
+    X-Vercel-Cache: BYPASS
+    X-Vercel-Execution-Region: iad1
+    X-Vercel-Id: fra1::iad1::kv4pv-1716677440283-4df217d6ded4
+    Transfer-Encoding: chunked
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "id": "f76c6a4e-adc8-44fe-ad98-5f7f59b367d1",
+              "title": "Adidas Postman Song",
+              "image_url": "https://cdn1.suno.ai/image_f76c6a4e-adc8-44fe-ad98-5f7f59b367d1.png",
+              "lyric": "Adidas on my feet, I'm feelin' so elite,  From the streets to the gym, can't be beat,  Three stripes, no hype, just pure might,  In my gear, I'm ready, day or night.[Verse 2]  Boost in my step, I'm flyin' so high,  Performance and style, reachin' for the sky,  From the track to the court, I'm always on point,  Adidas got me covered, every joint.[Bridge]  Innovation in the threads, comfort in the soles,  Adidas keeps me movin', achievin' all my goals,  From classics to the new, they always come through,  In my Adidas gear, there's nothin' I can't do.",
+              "audio_url": "https://cdn1.suno.ai/f76c6a4e-adc8-44fe-ad98-5f7f59b367d1.mp3",
+              "video_url": "https://cdn1.suno.ai/f76c6a4e-adc8-44fe-ad98-5f7f59b367d1.mp4",
+              "created_at": "2024-05-25T22:48:36.016Z",
+              "model_name": "chirp-v3",
+              "status": "complete",
+              "gpt_description_prompt": null,
+              "prompt": "Adidas on my feet, I'm feelin' so elite,  From the streets to the gym, can't be beat,  Three stripes, no hype, just pure might,  In my gear, I'm ready, day or night.[Verse 2]  Boost in my step, I'm flyin' so high,  Performance and style, reachin' for the sky,  From the track to the court, I'm always on point,  Adidas got me covered, every joint.[Bridge]  Innovation in the threads, comfort in the soles,  Adidas keeps me movin', achievin' all my goals,  From classics to the new, they always come through,  In my Adidas gear, there's nothin' I can't do.",
+              "type": "gen",
+              "tags": "hip-hop or electronic music."
+          },
+          {
+              "id": "4254c8da-2240-4d99-82e1-3a887be09d7b",
+              "title": "Adidas Postman Song",
+              "image_url": "https://cdn1.suno.ai/image_4254c8da-2240-4d99-82e1-3a887be09d7b.png",
+              "lyric": "Adidas on my feet, I'm feelin' so elite,  From the streets to the gym, can't be beat,  Three stripes, no hype, just pure might,  In my gear, I'm ready, day or night.[Verse 2]  Boost in my step, I'm flyin' so high,  Performance and style, reachin' for the sky,  From the track to the court, I'm always on point,  Adidas got me covered, every joint.[Bridge]  Innovation in the threads, comfort in the soles,  Adidas keeps me movin', achievin' all my goals,  From classics to the new, they always come through,  In my Adidas gear, there's nothin' I can't do.",
+              "audio_url": "https://cdn1.suno.ai/4254c8da-2240-4d99-82e1-3a887be09d7b.mp3",
+              "video_url": "https://cdn1.suno.ai/4254c8da-2240-4d99-82e1-3a887be09d7b.mp4",
+              "created_at": "2024-05-25T22:48:36.016Z",
+              "model_name": "chirp-v3",
+              "status": "complete",
+              "gpt_description_prompt": null,
+              "prompt": "Adidas on my feet, I'm feelin' so elite,  From the streets to the gym, can't be beat,  Three stripes, no hype, just pure might,  In my gear, I'm ready, day or night.[Verse 2]  Boost in my step, I'm flyin' so high,  Performance and style, reachin' for the sky,  From the track to the court, I'm always on point,  Adidas got me covered, every joint.[Bridge]  Innovation in the threads, comfort in the soles,  Adidas keeps me movin', achievin' all my goals,  From classics to the new, they always come through,  In my Adidas gear, there's nothin' I can't do.",
+              "type": "gen",
+              "tags": "hip-hop or electronic music."
+          }
+      ]
+order: 1000

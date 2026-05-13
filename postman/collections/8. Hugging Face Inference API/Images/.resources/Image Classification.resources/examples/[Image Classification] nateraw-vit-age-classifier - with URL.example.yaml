@@ -1,0 +1,56 @@
+$kind: http-example
+name: "[Image Classification] nateraw/vit-age-classifier - with URL"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: nateraw/vit-age-classifier
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "https://media.istockphoto.com/id/805012064/photo/portrait-of-mature-hispanic-man.jpg?s=612x612&w=0&k=20&c=AfNa1ay8LPzaO-NOJZspqULvYavyhXg4rnJ9U_tvJY4="
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Wed, 16 Aug 2023 14:31:14 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-sha: f5629497debbd1a543fa49e0a86cadd145d4947d
+    server: uvicorn
+    access-control-expose-headers: x-compute-type, x-compute-time
+    x-request-id: lZwTzhaCDeVeUxH89QeXQ
+    access-control-allow-credentials: "true"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "0.293"
+    x-compute-characters: "-1"
+    x-compute-type: cpu
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "score": 0.5977441668510437,
+              "label": "20-29"
+          },
+          {
+              "score": 0.3743322789669037,
+              "label": "30-39"
+          },
+          {
+              "score": 0.019503770396113396,
+              "label": "40-49"
+          },
+          {
+              "score": 0.00795443169772625,
+              "label": "10-19"
+          },
+          {
+              "score": 0.00025226050638593733,
+              "label": "50-59"
+          }
+      ]
+order: 1000

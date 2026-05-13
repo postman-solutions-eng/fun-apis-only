@@ -1,0 +1,6 @@
+$kind: collection
+description: |-
+  <video src="https://youtube.com/embed/df9tqGzxZnM" width="340" height="170"></video>
+
+  Contains the content from this video (English), text and image manipulation, Git based integration and Postman Public API network
+order: 2000

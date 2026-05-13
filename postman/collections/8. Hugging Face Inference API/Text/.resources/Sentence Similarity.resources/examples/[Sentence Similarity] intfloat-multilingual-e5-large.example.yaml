@@ -1,0 +1,46 @@
+$kind: http-example
+name: "[Sentence Similarity] intfloat/multilingual-e5-large"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: intfloat/multilingual-e5-large
+  body:
+    type: json
+    content: |-
+      {
+          "inputs": {
+              "source_sentence": "That is a happy person",
+              "sentences": [
+                  "幸せな人です",
+                  "That is a very happy person",
+                  "それは幸せな人です"
+              ]
+          }
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Wed, 16 Aug 2023 14:12:15 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-characters: "64"
+    x-sha: c505dce3578a12ec54e47bdc72bef5cd0eacb085
+    x-request-id: WGPuqgb_PVpWrINbcFvHM
+    x-compute-type: cpu
+    access-control-expose-headers: x-compute-type, x-compute-time
+    server: uvicorn
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "0.361"
+    access-control-allow-credentials: "true"
+  body:
+    type: json
+    content: |-
+      [
+          0.8342687487602234,
+          0.9797126054763794,
+          0.8778853416442871
+      ]
+order: 2000

@@ -1,0 +1,140 @@
+$kind: http-request
+description: Creates a completion for the provided prompt and parameters.
+url: "{{sunoAIUrl}}/api/get?ids={{songIds}}"
+method: GET
+queryParams:
+  ids: "{{songIds}}"
+scripts:
+  - type: beforeRequest
+    code: |
+      // Construct the request object as a local variable
+      const req = {
+          method: "GET",
+          url: pm.variables.replaceIn("{{sunoAIUrl}}/api/get?ids={{songIds}}") // Correctly construct the URL
+      };
+
+      // Log the constructed request object to the console
+      console.log(req);
+
+      // Define default maxAttempts and timeout
+      const defaultMaxAttempts = 3; // Set the default maximum number of attempts
+      const timeout = 5000; // Set the timeout in milliseconds
+
+      // Define a retry condition function
+      function defaultRetryCondition(res) {
+        return res.code !== 200;
+      }
+
+      // Define a custom retry condition function
+      function customRetryCondition(res) {
+          // log out the response body
+          console.log(res.json());
+        return res.code !== 200 || !res.json() || !res.json()[0] || !res.json()[0].video_url || res.json()[0].video_url === ""; // Check for empty string
+      }
+
+      function sendRequestWithRetry(req, attempt = 1, maxAttempts = defaultMaxAttempts, retryCondition = defaultRetryCondition) {
+          pm.sendRequest(req, (err, res) => {
+              console.log("Attempt: ", attempt, "\tmaxAttempts: ", maxAttempts, "\tReq: ", req);
+              if (err) {
+                  console.error("Error during request:", err);
+                  if (attempt <= maxAttempts) {
+                      console.log("Retrying in", timeout / 1000, "seconds...");
+                      setTimeout(() => sendRequestWithRetry(req, attempt + 1, maxAttempts, retryCondition), timeout); // Updated to use new method name
+                  } else {
+                      console.error("Max attempts exceeded. Giving up.");
+                      throw new Error("Max attempts exceeded");
+                  }
+                  return;
+              }
+
+              if (!retryCondition(res)) {
+                  console.log("Request successful!");
+              } else if (attempt <= maxAttempts) {
+                  console.log("Looping ", attempt);
+                  setTimeout(() => sendRequestWithRetry(req, attempt + 1, maxAttempts, retryCondition), timeout); // Updated to use new method name
+              } else {
+                  console.error("Max attempts exceeded. Giving up.");
+                  throw new Error("Max attempts exceeded");
+              }
+          });
+      }
+
+      // Start the retry process with the default retry condition
+      sendRequestWithRetry(req); 
+
+      // Start the retry process with the custom retry condition
+      sendRequestWithRetry(req, 1, customRetryCondition); 
+
+      // Start the retry process with a custom maxAttempts value
+      sendRequestWithRetry(req, 1, 5, customRetryCondition); // Set maxAttempts to 5
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      var template = `
+      <style type="text/css">
+          .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}
+          .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}
+          .tftable tr {background-color:#ffffff;}
+          .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}
+          .tftable tr:hover {background-color:#e0ffff;}
+          .code {white-space: pre-wrap; font-size: 12px;} /* Reduced font size by half */
+      </style>
+
+      <table class="tftable" border="1">
+          <tr>
+              <th>Title</th>
+              <th>Lyrics</th>
+              <th>Video</th>
+              <th>Test Script</th>
+          </tr>
+          
+          {{#each response}}
+              <tr>
+                  <td>{{title}}</td>
+                  <td style="width: 30%">{{lyric}}</td>
+                  <td><video controls height="240" width="320"><source src="{{video_url}}" type="video/mp4">Your browser does not support the video element.</video><br><a href="#" onclick="copyToClipboard('{{video_url}}')">Copy Link</a></td>
+                  <td><pre class="code">{{testScript}}</pre></td>
+              </tr>
+          {{/each}}
+      </table>
+
+      <script>
+          function copyToClipboard(text) {
+              var input = document.createElement('input');
+              input.value = text;
+              document.body.appendChild(input);
+              input.select();
+              document.execCommand('copy');
+              document.body.removeChild(input);
+              alert('Copied the link: ' + text);
+          }
+
+      </script>
+      `;
+
+      function constructVisualizerPayload() {
+          var res = pm.response.json();
+
+          // iterate over the res elements and add the testScript property to each element
+          res.forEach(function(element) {
+              var videoSnippetPre = `
+
+              `
+              var testScript = `
+      pm.test("API response 2xx OK", function () {
+          if (pm.response.code < 200 || pm.response.code > 299) {
+              pm.visualizer.set('<video controls height="240" width="320"><source src="${element.video_url}" type="video/mp4"></video>', {});
+              pm.expect.fail("API status code is not 2xx ok, go to the visualization tab for a video on explanations how to fix this.");
+          }
+      });
+              `
+              element.testScript = testScript;
+          });
+          
+          return {response: res};
+      }
+
+      pm.visualizer.set(template, constructVisualizerPayload());
+    language: text/javascript
+examples: ./.resources/Wait for Suno AI Song Video Render Completion (loop).resources/examples
+order: 8000

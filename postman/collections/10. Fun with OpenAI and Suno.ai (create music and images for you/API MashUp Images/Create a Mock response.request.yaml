@@ -1,0 +1,44 @@
+$kind: http-request
+description: |-
+  Creates a request response in a collection. For a complete list of properties, see the [Collection Format Response documentation](https://learning.postman.com/collection-format/reference/response/#reference-diagram).
+
+  **Note:**
+
+  It is recommended that you pass the `name` property in the request body. If you do not, the system uses a null value. As a result, this creates a response with a blank name.
+url: https://api.getpostman.com/collections/{{collectionId}}/responses?request={{requestId}}
+method: POST
+queryParams:
+  - key: request
+    value: "{{requestId}}"
+    description: (Required) The parent request's ID.
+body:
+  type: json
+  content: |-
+    {
+        "name": "OK {{company}} ({{material}})",
+        "responseCode": {
+            "code": 200,
+            "name": "OK"
+        },
+        "headers": [
+            {
+                "key": "content-type",
+                "value": "application/json; charset=utf-8"
+            }
+        ],
+        "text": "{\n \"id\": \"{{company}}\", \n \"name\": \"OK {{company}}\", \n \"city\": \"{{city}}\", \n \"motto\": \"{{motto}}\", \n \"description\": \"{{description}}\", \n \"associations\": \n [{\n\"name\": \"{{product}}\",\n\"type\": \"product\",\n\"url\": \"{{url}}\",\n\"material\": \"{{material}}\" \n }\n ]\n}",
+        "language": "json",
+        "requestObject": "{\"method\":\"GET\",\"headers\":\"X-Api-Key: <API Key>\\n\",\"pathVariables\":{\"companyId\":\"{{company}}\"},\"url\":\"{{baseUrl}}/companies/:companyId?material={{material}}\",\"pathVariableData\":[{\"key\":\"companyId\",\"value\":\"{{company}}\",\"description\":\"(Required) Company ID\"}],\"queryParams\":[{\"key\":\"material\",\"value\":\"{{material}}\",\"equals\":true,\"description\":\"\",\"enabled\":true},{\"key\":\"mode\",\"value\":\"exact\",\"equals\":true,\"description\":\"\",\"enabled\":false}],\"headerData\":[{\"description\":\"Added as a part of security scheme: apikey\",\"key\":\"X-Api-Key\",\"value\":\"<API Key>\"}],\"dataMode\":null,\"data\":null,\"protocolProfileBehavior\":{\"disableBodyPruning\":true}}"
+    }
+auth:
+  type: apikey
+  credentials:
+    value: "{{X-API-Key}}"
+    key: X-API-Key
+    in: header
+scripts:
+  - type: beforeRequest
+    code: |
+      pm.variables.set('baseUrl', '{{baseUrl}}')
+    language: text/javascript
+order: 10000

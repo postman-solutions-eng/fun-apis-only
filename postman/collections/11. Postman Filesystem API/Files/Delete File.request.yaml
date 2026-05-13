@@ -1,0 +1,29 @@
+$kind: http-request
+description: |-
+  ### Delete File
+
+  Deletes the specified file from the server.
+
+  #### Request Body
+
+  This endpoint does not require a request body.
+
+  #### Response
+
+  - Status: 200
+      
+  - Content-Type: application/json
+      
+
+  ``` json
+  {
+      "message": ""
+  }
+
+   ```
+url: "{{baseUrl}}/api/files/file.txt"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+examples: ./.resources/Delete File.resources/examples
+order: 6000

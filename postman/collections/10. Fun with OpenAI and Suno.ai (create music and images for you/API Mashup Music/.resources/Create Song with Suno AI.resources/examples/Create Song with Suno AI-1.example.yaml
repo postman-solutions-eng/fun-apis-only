@@ -1,0 +1,71 @@
+$kind: http-example
+name: Create Song with Suno AI
+request:
+  url: https://suno-api-vercel-blue.vercel.app/api/custom_generate
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+        "prompt": "{{musicText}}",
+        "tags": "{{musicStyle}}",
+        "title": "{{company}} Postman Song ({{statusCode}})",
+        "make_instrumental": false,
+        "wait_audio": true
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Access-Control-Allow-Headers: Content-Type, Authorization
+    Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
+    Access-Control-Allow-Origin: "*"
+    Cache-Control: public, max-age=0, must-revalidate
+    Connection: keep-alive
+    Content-Encoding: br
+    Content-Type: application/json
+    Date: Sat, 25 May 2024 23:24:14 GMT
+    Server: Vercel
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    Vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+    X-Matched-Path: /api/custom_generate
+    X-Vercel-Cache: MISS
+    X-Vercel-Execution-Region: iad1
+    X-Vercel-Id: fra1::iad1::fkq6d-1716679441236-7916da655839
+    Transfer-Encoding: chunked
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "id": "1b72ba29-3a56-4571-b347-f975127e4bed",
+              "title": "Adidas Postman Song (401)",
+              "image_url": "https://cdn1.suno.ai/image_1b72ba29-3a56-4571-b347-f975127e4bed.png",
+              "lyric": "Yo, you hit the API, Adidas on the line,Got that HTTP status, now you're feelin' fine,But wait, what's this? A code in disguise,Let's break it down, no need for surprise.Status 401, you ain't got the key,Authentication failed, now you're askin' me,Postman got the tools, make it all right,Use those auth helpers, get your creds tight.[Bridge]Check the headers, check the tokens, make it legit,Find those working requests, don't you ever quit,Adidas got the style, now you got the flow,Fix that status code, let the data show.[Verse 2]Status 404, the endpoint's gone,Double-check the URL, don't get it wrong,Postman collections, got your back, it's true,Find the right path, make it all brand new.Status 500, server's in distress,Adidas API, it's a hot mess,Retry the call, maybe it's a glitch,Postman helps you out, now you're feelin' rich.So when you see that status, don't you fret,Postman and Adidas, the best duo yet,Fix those errors, make it all sublime,API success, every single time.",
+              "audio_url": "https://audiopipe.suno.ai/?item_id=1b72ba29-3a56-4571-b347-f975127e4bed",
+              "video_url": "",
+              "created_at": "2024-05-25T23:24:01.607Z",
+              "model_name": "chirp-v3",
+              "status": "streaming",
+              "gpt_description_prompt": null,
+              "prompt": "Yo, you hit the API, Adidas on the line,Got that HTTP status, now you're feelin' fine,But wait, what's this? A code in disguise,Let's break it down, no need for surprise.Status 401, you ain't got the key,Authentication failed, now you're askin' me,Postman got the tools, make it all right,Use those auth helpers, get your creds tight.[Bridge]Check the headers, check the tokens, make it legit,Find those working requests, don't you ever quit,Adidas got the style, now you got the flow,Fix that status code, let the data show.[Verse 2]Status 404, the endpoint's gone,Double-check the URL, don't get it wrong,Postman collections, got your back, it's true,Find the right path, make it all brand new.Status 500, server's in distress,Adidas API, it's a hot mess,Retry the call, maybe it's a glitch,Postman helps you out, now you're feelin' rich.So when you see that status, don't you fret,Postman and Adidas, the best duo yet,Fix those errors, make it all sublime,API success, every single time.",
+              "type": "gen",
+              "tags": "hip-hop or electronic music."
+          },
+          {
+              "id": "08b4dc86-4fb8-46e2-b802-36ccc1a82333",
+              "title": "Adidas Postman Song (401)",
+              "image_url": "https://cdn1.suno.ai/image_08b4dc86-4fb8-46e2-b802-36ccc1a82333.png",
+              "lyric": "Yo, you hit the API, Adidas on the line,Got that HTTP status, now you're feelin' fine,But wait, what's this? A code in disguise,Let's break it down, no need for surprise.Status 401, you ain't got the key,Authentication failed, now you're askin' me,Postman got the tools, make it all right,Use those auth helpers, get your creds tight.[Bridge]Check the headers, check the tokens, make it legit,Find those working requests, don't you ever quit,Adidas got the style, now you got the flow,Fix that status code, let the data show.[Verse 2]Status 404, the endpoint's gone,Double-check the URL, don't get it wrong,Postman collections, got your back, it's true,Find the right path, make it all brand new.Status 500, server's in distress,Adidas API, it's a hot mess,Retry the call, maybe it's a glitch,Postman helps you out, now you're feelin' rich.So when you see that status, don't you fret,Postman and Adidas, the best duo yet,Fix those errors, make it all sublime,API success, every single time.",
+              "audio_url": "https://audiopipe.suno.ai/?item_id=08b4dc86-4fb8-46e2-b802-36ccc1a82333",
+              "video_url": "",
+              "created_at": "2024-05-25T23:24:01.607Z",
+              "model_name": "chirp-v3",
+              "status": "streaming",
+              "gpt_description_prompt": null,
+              "prompt": "Yo, you hit the API, Adidas on the line,Got that HTTP status, now you're feelin' fine,But wait, what's this? A code in disguise,Let's break it down, no need for surprise.Status 401, you ain't got the key,Authentication failed, now you're askin' me,Postman got the tools, make it all right,Use those auth helpers, get your creds tight.[Bridge]Check the headers, check the tokens, make it legit,Find those working requests, don't you ever quit,Adidas got the style, now you got the flow,Fix that status code, let the data show.[Verse 2]Status 404, the endpoint's gone,Double-check the URL, don't get it wrong,Postman collections, got your back, it's true,Find the right path, make it all brand new.Status 500, server's in distress,Adidas API, it's a hot mess,Retry the call, maybe it's a glitch,Postman helps you out, now you're feelin' rich.So when you see that status, don't you fret,Postman and Adidas, the best duo yet,Fix those errors, make it all sublime,API success, every single time.",
+              "type": "gen",
+              "tags": "hip-hop or electronic music."
+          }
+      ]
+order: 2000

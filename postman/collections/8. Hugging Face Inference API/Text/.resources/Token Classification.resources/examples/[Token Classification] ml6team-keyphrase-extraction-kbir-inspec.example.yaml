@@ -1,0 +1,92 @@
+$kind: http-example
+name: "[Token Classification] ml6team/keyphrase-extraction-kbir-inspec"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: ml6team/keyphrase-extraction-kbir-inspec
+  body:
+    type: json
+    content: |
+      {
+        "inputs": "Keyphrase extraction is a technique in text analysis where you extract the important keyphrases from a document.  Thanks to these keyphrases humans can understand the content of a text very quickly and easily without reading  it completely. Keyphrase extraction was first done primarily by human annotators, who read the text in detail  and then wrote down the most important keyphrases. The disadvantage is that if you work with a lot of documents,  this process can take a lot of time. Here is where Artificial Intelligence comes in. Currently, classical machine learning methods, that use statistical  and linguistic features, are widely used for the extraction process. Now with deep learning, it is possible to capture  the semantic meaning of a text even better than these classical methods. Classical methods look at the frequency,  occurrence and order of words in the text, whereas these neural approaches can capture long-term semantic dependencies  and context of words in a text."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:32:27 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    access-control-expose-headers: x-compute-type, x-compute-time
+    access-control-allow-credentials: "true"
+    server: uvicorn
+    x-compute-time: "0.370"
+    x-compute-characters: "991"
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-request-id: cueT9uTu3ya29vPSfeMYB
+    x-sha: 75baef776a9c6080987f53c3381cfbbdd9e83576
+    x-compute-type: cpu
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "entity_group": "KEY",
+              "score": 0.9999971985816956,
+              "word": " Keyphrase extraction",
+              "start": 0,
+              "end": 20
+          },
+          {
+              "entity_group": "KEY",
+              "score": 0.9999934434890747,
+              "word": " text analysis",
+              "start": 39,
+              "end": 52
+          },
+          {
+              "entity_group": "KEY",
+              "score": 0.9999957084655762,
+              "word": " Keyphrase extraction",
+              "start": 241,
+              "end": 261
+          },
+          {
+              "entity_group": "KEY",
+              "score": 0.9999982118606567,
+              "word": " Artificial Intelligence",
+              "start": 502,
+              "end": 525
+          },
+          {
+              "entity_group": "KEY",
+              "score": 0.9999910593032837,
+              "word": " machine learning",
+              "start": 557,
+              "end": 573
+          },
+          {
+              "entity_group": "KEY",
+              "score": 0.9999518990516663,
+              "word": " linguistic features",
+              "start": 609,
+              "end": 628
+          },
+          {
+              "entity_group": "KEY",
+              "score": 0.9999985694885254,
+              "word": " deep learning",
+              "start": 683,
+              "end": 696
+          },
+          {
+              "entity_group": "KEY",
+              "score": 0.9689047336578369,
+              "word": " semantic meaning",
+              "start": 729,
+              "end": 745
+          }
+      ]
+order: 4000

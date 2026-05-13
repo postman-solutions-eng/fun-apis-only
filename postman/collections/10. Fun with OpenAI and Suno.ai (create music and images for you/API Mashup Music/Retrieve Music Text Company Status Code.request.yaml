@@ -1,0 +1,64 @@
+$kind: http-request
+description: Creates a completion for the provided prompt and parameters.
+url: "{{openAIUrl}}/chat/completions"
+method: POST
+body:
+  type: json
+  content: |
+    {
+        "model": "gpt-4o",
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                        {
+                            "type": "text",
+                            "text": "Imagine somebody called an API from company {{company}} and got HTTP status {{statusCode}} back. Please write an explanation as a short song text what this HTTP status code means and how to typically fix it with the help of the Postman API platform. If the status code is authentication related, also mention the mart authentication helpers from Postman and the ability to find related, already working requests in Postman. The song text should also refer to company {{company}} in a humorous way that is typical for the style of that company. The song should have two verses and one bridge. Write [Bridge] in front of the bridge's text and [Verse 2] in front of the second verse. Start your output right away with the song. Do not repeat [Verse] twice at the beginning. The song's musical genre is {{musicStyle}} and the text of the song should be in {{language}}"
+                        }
+                        
+                ]
+            }
+        ],
+        "temperature": 0.2,
+        "n": 1,
+        "stream": false,
+        "max_tokens": 500,
+        "presence_penalty": 0,
+        "frequency_penalty": 0
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+              pm.expect(jsonData).to.be.an('object');
+          });
+
+          // Set response in musicText collection variable, but remove all newlines
+          pm.collectionVariables.set("musicText", jsonData.choices[0].message.content.replace(/\n/g, ''));
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+      var template = `
+      <div style="font-family: Arial, sans-serif; padding: 20px;">
+          <h2>Song Text</h2>
+          <div>
+              {{response.choices.[0].message.content}}
+          </div>
+      </div>
+      `;
+
+      function constructVisualizerPayload() {
+          return { response: pm.response.json() }
+      }
+
+      pm.visualizer.set(template, constructVisualizerPayload());
+    language: text/javascript
+order: 4000

@@ -1,0 +1,25 @@
+$kind: http-request
+description: |-
+  **Translation** models specialize in translating text from source to target languages. Some models accept a variety of source languages to translate to a specific target langauge, while other models specialize in certain langauge pairs.
+
+    
+  See available [](https://huggingface.co/models?pipeline_tag=summarization&sort=trending)[Translation models](https://huggingface.co/models?pipeline_tag=translation&sort=trending)
+
+  ### Example models
+
+  | model | description |
+  | --- | --- |
+  | [Helsinki-NLP/opus-mt-en-zh](https://huggingface.co/Helsinki-NLP/opus-mt-en-zh) | English > Chinese |
+  | [Helsinki-NLP/opus-mt-es-en](https://huggingface.co/Helsinki-NLP/opus-mt-es-en?text=Me+llamo+Wolfgang+y+vivo+en+Berlin) | Spanish > English |
+url: "{{baseUrl}}/models/:model"
+method: POST
+pathVariables:
+  model: Helsinki-NLP/opus-mt-en-zh
+body:
+  type: json
+  content: |-
+    {
+      "inputs": "My name is Sarah and I live in London"
+    }
+examples: ./.resources/Translation.resources/examples
+order: 7000

@@ -1,0 +1,65 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: bert-base-uncased
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "Life is full of [MASK], and it's up to us to navigate through them with determination and a positive mindset."
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 21:57:01 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-characters: "109"
+    x-compute-type: cpu
+    x-request-id: nV4BO7TJarMwoEUyeL9-P
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    x-compute-time: "0.134"
+    access-control-allow-credentials: "true"
+    x-sha: 1dbc166cf8765166998eff31ade2eb64c8a40076
+    access-control-expose-headers: x-compute-type, x-compute-time
+    server: uvicorn
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "score": 0.2680909335613251,
+              "token": 3471,
+              "token_str": "problems",
+              "sequence": "life is full of problems, and it's up to us to navigate through them with determination and a positive mindset."
+          },
+          {
+              "score": 0.16296273469924927,
+              "token": 12020,
+              "token_str": "possibilities",
+              "sequence": "life is full of possibilities, and it's up to us to navigate through them with determination and a positive mindset."
+          },
+          {
+              "score": 0.11266535520553589,
+              "token": 7860,
+              "token_str": "challenges",
+              "sequence": "life is full of challenges, and it's up to us to navigate through them with determination and a positive mindset."
+          },
+          {
+              "score": 0.04594510793685913,
+              "token": 6695,
+              "token_str": "opportunities",
+              "sequence": "life is full of opportunities, and it's up to us to navigate through them with determination and a positive mindset."
+          },
+          {
+              "score": 0.03303191438317299,
+              "token": 15572,
+              "token_str": "mysteries",
+              "sequence": "life is full of mysteries, and it's up to us to navigate through them with determination and a positive mindset."
+          }
+      ]
+order: 1000

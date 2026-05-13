@@ -1,0 +1,21 @@
+$kind: http-request
+description: Creates a completion for the provided prompt and parameters.
+url: "{{openAIUrl}}/completions"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-3.5-turbo-instruct",
+        "prompt": "The specific product name or service, Banca d'Italia is mostly known for is ",
+        "temperature": 0.3,
+        "max_tokens": 70,
+        "frequency_penalty" : -1
+
+    }
+scripts:
+  - type: afterResponse
+    code: 'pm.visualizer.set(`<textarea style="width: 100vw; height: 100vh; font-family: monospace;">${pm.response.json().choices[0].text}</textarea>`);'
+    language: text/javascript
+examples: ./.resources/Text completion.resources/examples
+order: 1000

@@ -1,0 +1,26 @@
+$kind: http-request
+description: |-
+  # File Upload
+
+  This endpoint allows you to upload a file to the server.
+
+  ## Request Body
+
+  - `content`: The content of the file to be uploaded.
+      
+
+  ## Response
+
+  - `message`: A message indicating the status of the file upload.
+url: "{{baseUrl}}/api/files/file.txt"
+method: POST
+headers:
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+        "content": "Hello, World!"
+    }
+examples: ./.resources/CreateFile.resources/examples
+order: 4000

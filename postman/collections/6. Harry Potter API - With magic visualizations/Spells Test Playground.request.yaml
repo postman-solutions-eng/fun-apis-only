@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{render}}/api/spells"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      // assume there are three unforgivable spells in the list
+      pm.test('There are three unforgivable spells in the list', function () {
+          pm.response.to.have.status(200);
+          const data = pm.response.json();
+          const unforgivableSpells = ['Avada Kedavra', 'Cruciatus Curse', 'Imperio'];
+          const spellNames = data.map(spell => spell.name);
+          unforgivableSpells.forEach(spell => {
+              pm.expect(spellNames).to.include(spell);
+          });
+      });
+    language: text/javascript
+examples: ./.resources/Spells Test Playground.resources/examples
+order: 7000

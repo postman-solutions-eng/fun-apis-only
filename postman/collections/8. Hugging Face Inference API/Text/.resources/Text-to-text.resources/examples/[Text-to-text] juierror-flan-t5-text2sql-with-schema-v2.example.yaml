@@ -1,0 +1,39 @@
+$kind: http-example
+name: "[Text-to-text] juierror/flan-t5-text2sql-with-schema-v2"
+request:
+  url: "{{baseUrl}}/models/:model"
+  method: POST
+  pathVariables:
+    model: juierror/flan-t5-text2sql-with-schema-v2
+  body:
+    type: json
+    content: |-
+      {
+        "inputs": "convert question and table into SQL query. tables: people_name(id,name), people_age(people_id,age). question: how many people with name jui and age less than 25"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Tue, 15 Aug 2023 22:19:07 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    x-compute-type: cpu
+    vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+    access-control-allow-credentials: "true"
+    x-compute-characters: "160"
+    access-control-expose-headers: x-compute-type, x-compute-time
+    server: uvicorn
+    x-request-id: 6qmKppecV0EL25MJm85xF
+    x-compute-time: "0.576"
+    x-sha: 177b4a502c62320dcc3ae0b288b5fc082b8de79c
+  body:
+    type: json
+    content: |-
+      [
+          {
+              "generated_text": "SELECT count(*) FROM people_age WHERE people_id IN"
+          }
+      ]
+order: 2000

@@ -1,0 +1,36 @@
+$kind: http-request
+url: "{{openAIUrl}}/chat/completions"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+        "model": "gpt-3.5-turbo",
+        "messages" : [
+            {"role": "system", "content": "You are a helpful assistant who answers questions in German"},
+            {"role": "assistant", "content": "Write a text that appears as if a human has written it for a technical audience."},
+            {"role": "user", "content": "Write a summary of 100 sentences on how Postman, the API platform and backstage the software catalog framework compare to each other and how they can complement each other"}
+        ],
+        "temperature": 0.5,
+        "max_tokens": 4096
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = null;
+
+      try {
+          jsonData = pm.response.json();
+          pm.test("Check if response is valid JSON", function() {    
+          pm.expect(jsonData).to.be.an('object');
+          pm.visualizer.set(`<textarea style="width: 100vw; height: 100vh; font-family: monospace;">${pm.response.json().choices[0].message.content}</textarea>`);
+      });
+      } catch (a) {
+          console.log("Dealing with an SSE stream ... ")
+      }
+    language: text/javascript
+examples: ./.resources/Create chat message completion.resources/examples
+order: 9000

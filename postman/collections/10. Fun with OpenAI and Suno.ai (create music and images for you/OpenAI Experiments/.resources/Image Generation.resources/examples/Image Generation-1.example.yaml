@@ -1,0 +1,50 @@
+$kind: http-example
+name: Image Generation
+request:
+  url: "{{openAIUrl}}/images/generations"
+  method: POST
+  body:
+    type: json
+    content: |
+      {
+        "prompt": "Vilnius old town made of Lego",
+        "n": 3,
+        "size": "512x512"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Date: Sat, 20 May 2023 13:27:59 GMT
+    Content-Type: application/json
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    openai-version: 2020-10-01
+    openai-organization: user-lryarsvrbjl30zf7hotgyuce
+    x-request-id: e4aa926cb67abae84fd8d9314f8221d6
+    openai-processing-ms: "5224"
+    access-control-allow-origin: "*"
+    strict-transport-security: max-age=15724800; includeSubDomains
+    CF-Cache-Status: DYNAMIC
+    Server: cloudflare
+    CF-RAY: 7ca4eb745de14528-TXL
+    Content-Encoding: br
+    alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  body:
+    type: json
+    content: |-
+      {
+          "created": 1684589279,
+          "data": [
+              {
+                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-SqQ8KI5wVfMjitgS3AKEqoc2/user-lRYARsvrbJl30ZF7hotgyuce/img-Ntry7F3v9BvQ1aBmyx1fzxgs.png?st=2023-05-20T12%3A27%3A59Z&se=2023-05-20T14%3A27%3A59Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-05-19T20%3A58%3A01Z&ske=2023-05-20T20%3A58%3A01Z&sks=b&skv=2021-08-06&sig=aAtXsm02wcrvI5jScMA/PlcYMQHEl0%2B21hB/r%2BjbmH4%3D"
+              },
+              {
+                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-SqQ8KI5wVfMjitgS3AKEqoc2/user-lRYARsvrbJl30ZF7hotgyuce/img-33bjIquTMADNy6cmeGHcYDxg.png?st=2023-05-20T12%3A27%3A59Z&se=2023-05-20T14%3A27%3A59Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-05-19T20%3A58%3A01Z&ske=2023-05-20T20%3A58%3A01Z&sks=b&skv=2021-08-06&sig=7c5JcYiwsSvghDv19E//5gMSe%2BHZO9ru6/TTUkvLzBs%3D"
+              },
+              {
+                  "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-SqQ8KI5wVfMjitgS3AKEqoc2/user-lRYARsvrbJl30ZF7hotgyuce/img-NqyBNYyYpD9eGt4mHInxjyeN.png?st=2023-05-20T12%3A27%3A59Z&se=2023-05-20T14%3A27%3A59Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-05-19T20%3A58%3A01Z&ske=2023-05-20T20%3A58%3A01Z&sks=b&skv=2021-08-06&sig=GhM1HDO7fZ7fh8PJP1Xc72a42HAFQn/1a9NHY8LvdoQ%3D"
+              }
+          ]
+      }
+order: 2000

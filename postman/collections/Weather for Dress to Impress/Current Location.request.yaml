@@ -1,0 +1,15 @@
+$kind: http-request
+description: \`Current\` endpoint let you fetch the weather stats of the metioned location in the \`query\` parameter.
+url: https://api.weatherstack.com/current?query={{city}}&access_key={{vault:weather_access_key}}
+method: GET
+queryParams:
+  - key: query
+    value: "{{city}}"
+    description: |
+      [Required] Use this parameter to pass a single location or multiple semicolon-separated location identifiers to the API. Learn more about the Query Parameter.
+  - key: access_key
+    value: "{{vault:weather_access_key}}"
+body:
+  type: json
+  content: ""
+order: 1000

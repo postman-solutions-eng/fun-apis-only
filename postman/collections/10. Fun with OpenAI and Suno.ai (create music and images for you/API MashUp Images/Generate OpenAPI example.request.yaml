@@ -1,0 +1,32 @@
+$kind: http-request
+url: https://postman-echo.com/post
+method: POST
+body:
+  type: text
+  content: |2-
+                    example:
+                        id: "{{companyId}}"
+                        name: "{{company}}"
+                        city: "{{city}}"
+                        motto: "{{motto}}"
+                        description: "{{description}}"
+                        associations:
+                          - name: "{{product}}"
+                            type: "product"
+                            url: "{{url}}"
+                            material: "{{material}}"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+
+      var jsonData = pm.response.json();
+
+      // visualize data field of the response's data field after parsing it as JSON and beautifying it
+
+      pm.visualizer.set(`<textarea style="width: 100vw; height: 70vh; font-family: monospace;">${jsonData.data}</textarea>`);
+    language: text/javascript
+order: 11000
