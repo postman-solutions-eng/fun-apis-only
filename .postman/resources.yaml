@@ -1,12 +1,14 @@
 workspace:
   id: 78cbee9c-c0ec-477c-a4ee-00788e84176a
+
 localResources:
   collections:
     - ../postman/collections/7. GitHub Octodex & Postbot
     - ../postman/collections/11. Postman Filesystem API
     - ../postman/collections/2. dicebear - unique avatar image generator
     - ../postman/collections/Weather for Dress to Impress
-    - ../postman/collections/10. Fun with OpenAI and Suno.ai (create music and images for you
+    - ../postman/collections/10. Fun with OpenAI and Suno.ai (create music and
+      images for you
     - ../postman/collections/3. Open Notify API - Where over the world is ISS-
     - ../postman/collections/4. OpenAI
     - ../postman/collections/6. Harry Potter API - With magic visualizations
@@ -14,6 +16,11 @@ localResources:
     - ../postman/collections/8. Hugging Face Inference API
     - ../postman/collections/1. Craiyon - AI image generation
     - ../postman/collections/9. Woah API
+  specs:
+    - ../index.yaml
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
 cloudResources:
   collections:
     ../postman/collections/7. GitHub Octodex & Postbot: 24435735-10c76c3f-a41e-47d1-8d70-d694489629cb
@@ -28,3 +35,5 @@ cloudResources:
     ../postman/collections/8. Hugging Face Inference API: 24435735-adeea754-2e37-4aec-8b1f-ea3e360f60ac
     ../postman/collections/1. Craiyon - AI image generation: 24435735-c4d6e2d9-cb10-4713-8543-c1ba2a5adfbb
     ../postman/collections/9. Woah API: 24435735-fb05da26-97b9-43cd-956b-85b9e6e70e3b
+  specs:
+    ../index.yaml: 7fb69d6c-6aa8-4956-a738-8ca1dd03408a
